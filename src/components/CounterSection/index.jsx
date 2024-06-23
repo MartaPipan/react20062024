@@ -8,19 +8,16 @@ class CounterSection extends Component {
     super();
     this.state = {
       step: 1,
-      frequency: 1000,
       autoClickInterval: null,
       autoClickTimeLeft: 30,
     };
   }
 
   componentDidMount() {
-    // Inicia o autoClick quando o componente é montado
     this.handleAutoClick();
   }
 
   componentWillUnmount() {
-    // Limpa o intervalo quando o componente é desmontado
     clearInterval(this.state.autoClickInterval);
   }
 
@@ -28,32 +25,25 @@ class CounterSection extends Component {
     this.setState({ step: newStep });
   };
 
-  setFrequency = (newFrequency) => {
-    this.setState({ frequency: newFrequency });
-  };
-
   handleAutoClick = () => {
-    const { autoClickInterval, frequency } = this.state;
+    const { autoClickInterval } = this.state;
     if (autoClickInterval) {
-      // Se o autoClickInterval já estiver definido, então parar o autoClick
       clearInterval(autoClickInterval);
       this.setState({ autoClickInterval: null });
     } else {
-      // Caso contrário, iniciar o autoClick
-      const interval = setInterval(this.autoClick, frequency); // Usa a frequência definida
-      this.setState({ autoClickInterval: interval, autoClickTimeLeft: 30 });
+      const interval = setInterval(this.autoClick, 1000);
+      this.setState({ autoClickInterval: interval });
     }
   };
 
   autoClick = () => {
     const { step, autoClickTimeLeft } = this.state;
     if (autoClickTimeLeft <= 0) {
-      this.handleAutoClick(); // Para o autoClick quando o tempo acabar
+      this.handleAutoClick();
       return;
     }
 
-    // Atualiza o contador no componente Counter
-    this.counterRef.handelCount();
+    this.counterRef.handleCount();
 
     this.setState((prevState) => ({
       autoClickTimeLeft: prevState.autoClickTimeLeft - 1,
@@ -61,20 +51,14 @@ class CounterSection extends Component {
   };
 
   render() {
-    const { step, frequency, autoClickTimeLeft } = this.state;
+    const { step } = this.state;
     return (
       <section className={styles.container}>
-        <Counter
-          step={step}
-          ref={(ref) => (this.counterRef = ref)}
-          autoClickTimeLeft={autoClickTimeLeft}
-        />
+        <Counter step={step} ref={(ref) => (this.counterRef = ref)} />
         <ControlCounter
           step={step}
           setStep={this.setStep}
           handleAutoClick={this.handleAutoClick}
-          setFrequency={this.setFrequency}
-          frequency={frequency}
         />
       </section>
     );
