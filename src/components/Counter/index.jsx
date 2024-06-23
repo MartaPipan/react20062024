@@ -7,8 +7,6 @@ class Counter extends Component {
     this.state = {
       count: 0,
       isAdd: true,
-      autoClickInterval: null,
-      autoClickTimeLeft: 30, // Tempo em segundos
     };
   }
 
