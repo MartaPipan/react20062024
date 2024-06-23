@@ -11,8 +11,7 @@ class Counter extends Component {
       autoClickTimeLeft: 30, // Tempo em segundos
     };
   }
-
-
+  
   autoClick = () => {
     const { count, isAdd, autoClickTimeLeft } = this.state;
     if (autoClickTimeLeft <= 0) {
