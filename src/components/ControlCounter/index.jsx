@@ -1,5 +1,3 @@
-
-Копіювати код
 import React from "react";
 import styles from "./ControlCounter.module.css";
 
@@ -17,7 +15,18 @@ const ControlCounter = (props) => {
         }}
         className={styles.input}
       />
-      <button onClick={handleAutoClick}>AutoClick</button> {/* Botão AutoClick */}
+      <h3>Frequency (ms): {frequency}</h3>
+      <input
+        type="number"
+        name="frequencyInput"
+        value={frequency}
+        onChange={({ target: { value } }) => {
+          setFrequency(Number(value));
+        }}
+        className={styles.input}
+      />
+      <button onClick={handleAutoClick}>AutoClick</button>{" "}
+      {/* Botão AutoClick */}
     </div>
   );
 };
