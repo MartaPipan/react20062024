@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "./ControlCounter.module.css"
+import styles from "./ControlCounter.module.css";
 
 const ControlCounter = (props) => {
-  const { setStep, step } = props;
+  const { setStep, step, handleAutoClick } = props;
   return (
     <div className={styles.controlCounter}>
       <h3>step={step}</h3>
@@ -14,9 +14,11 @@ const ControlCounter = (props) => {
           setStep(Number(value));
         }}
         className={styles.input}
-        min={1}   // Define o valor mínimo como 1
-        max={1000000}  // Define o valor máximo como 1000000
+        min={1} // Define o valor mínimo como 1
+        max={1000000} // Define o valor máximo como 1000000
       />
+      <button onClick={handleAutoClick}>AutoClick</button>{" "}
+      {/* Botão AutoClick */}
     </div>
   );
 };
