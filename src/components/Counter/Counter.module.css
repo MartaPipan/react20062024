@@ -8,11 +8,16 @@
     box-shadow: 0 0 10px rgba(4, 3, 30, 0.1);
 }
 
-h2 {
+.counter h2 {
     color: #333;
 }
 
-button {
+.counter p {
+    font-size: 18px;
+    color: #555;
+}
+
+.counter button {
     margin: 10px;
     padding: 10px 20px;
     font-size: 24px;
@@ -21,10 +26,10 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.counter button:hover {
     background-color: #847878;
 }
 
-button:active {
+.counter button:active {
     background-color: #ccc;
 }
