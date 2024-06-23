@@ -8,6 +8,7 @@ class CounterSection extends Component {
     super();
     this.state = {
       step: 1,
+      frequency: 1000,
       autoClickInterval: null,
       autoClickTimeLeft: 30,
     };
@@ -27,16 +28,20 @@ class CounterSection extends Component {
     this.setState({ step: newStep });
   };
 
+  setFrequency = (newFrequency) => {
+    this.setState({ frequency: newFrequency });
+  };
+
   handleAutoClick = () => {
-    const { autoClickInterval } = this.state;
+    const { autoClickInterval, frequency } = this.state;
     if (autoClickInterval) {
       // Se o autoClickInterval já estiver definido, então parar o autoClick
       clearInterval(autoClickInterval);
       this.setState({ autoClickInterval: null });
     } else {
       // Caso contrário, iniciar o autoClick
-      const interval = setInterval(this.autoClick, 1000); // Chama a função a cada 1 segundo
-      this.setState({ autoClickInterval: interval });
+      const interval = setInterval(this.autoClick, frequency); // Usa a frequência definida
+      this.setState({ autoClickInterval: interval, autoClickTimeLeft: 30 });
     }
   };
 
@@ -56,14 +61,16 @@ class CounterSection extends Component {
   };
 
   render() {
-    const { step } = this.state;
+    const { step, frequency } = this.state;
     return (
       <section className={styles.container}>
         <Counter step={step} ref={(ref) => (this.counterRef = ref)} />
         <ControlCounter
           step={step}
           setStep={this.setStep}
-          handleAutoClick={this.handleAutoClick} // Passando a função handleAutoClick
+          handleAutoClick={this.handleAutoClick}
+          setFrequency={this.setFrequency}
+          frequency={frequency}
         />
       </section>
     );
