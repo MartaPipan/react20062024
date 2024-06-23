@@ -12,7 +12,7 @@ class Counter extends Component {
 
   componentDidMount() {
     // Inicia o autoClick quando o componente é montado
-    this.startAutoClick(1000); // Chama a função a cada 1 segundo
+    this.startAutoClick(this.props.frequency); // Usa a frequência definida
   }
 
   componentWillUnmount() {
@@ -31,17 +31,16 @@ class Counter extends Component {
   };
 
   autoClick = () => {
-    const { count, isAdd, autoClickTimeLeft } = this.state;
+    const { count, isAdd } = this.state;
+    const { step, autoClickTimeLeft } = this.props;
+
     if (autoClickTimeLeft <= 0) {
       this.stopAutoClick();
       return;
     }
 
-    const newCount = isAdd ? count + this.props.step : count - this.props.step;
-    this.setState((prevState) => ({
-      count: newCount,
-      autoClickTimeLeft: prevState.autoClickTimeLeft - 1,
-    }));
+    const newCount = isAdd ? count + step : count - step;
+    this.setState({ count: newCount });
   };
 
   handelChangeMode = () => {
@@ -56,7 +55,9 @@ class Counter extends Component {
   };
 
   render() {
-    const { count, isAdd, autoClickTimeLeft } = this.state;
+    const { count, isAdd } = this.state;
+    const { autoClickTimeLeft } = this.props;
+
     return (
       <article className={styles.counter}>
         <h2>{count}</h2>
