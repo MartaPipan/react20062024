@@ -11,6 +11,7 @@ class Counter extends Component {
       autoClickTimeLeft: 30, // Tempo em segundos
     };
   }
+
   componentDidMount() {
     // Inicia o autoClick quando o componente é montado
     this.startAutoClick(1000); // Chama a função a cada 1 segundo
@@ -20,14 +21,16 @@ class Counter extends Component {
     // Limpa o intervalo quando o componente é desmontado
     clearInterval(this.state.autoClickInterval);
   }
+
   startAutoClick = (frequency) => {
     const autoClickInterval = setInterval(this.autoClick, frequency);
     this.setState({ autoClickInterval });
-  }; //startAutoClick: Inicia o autoClick com a frequência especificada (em milissegundos).
+  };
+
   stopAutoClick = () => {
     clearInterval(this.state.autoClickInterval);
     this.setState({ autoClickInterval: null });
-  }; //Para o autoClick ao limpar o intervalo.
+  };
 
   autoClick = () => {
     const { count, isAdd, autoClickTimeLeft } = this.state;
