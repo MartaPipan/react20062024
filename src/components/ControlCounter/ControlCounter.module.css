@@ -1,0 +1,24 @@
+.controlCounter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 199px;
+  margin: 0 auto;
+}
+
+.controlCounter h3 {
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #060336;
+}
+
+.controlCounter input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
