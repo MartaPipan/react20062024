@@ -61,10 +61,14 @@ class CounterSection extends Component {
   };
 
   render() {
-    const { step, frequency } = this.state;
+    const { step, frequency, autoClickTimeLeft } = this.state;
     return (
       <section className={styles.container}>
-        <Counter step={step} ref={(ref) => (this.counterRef = ref)} />
+        <Counter
+          step={step}
+          ref={(ref) => (this.counterRef = ref)}
+          autoClickTimeLeft={autoClickTimeLeft}
+        />
         <ControlCounter
           step={step}
           setStep={this.setStep}
