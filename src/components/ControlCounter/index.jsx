@@ -14,6 +14,8 @@ const ControlCounter = (props) => {
           setStep(Number(value));
         }}
         className={styles.input}
+        min={1}   // Define o valor mínimo como 1
+        max={1000000}  // Define o valor máximo como 1000000
       />
     </div>
   );
