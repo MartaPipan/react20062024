@@ -37,7 +37,7 @@ class CounterSection extends Component {
   };
 
   autoClick = () => {
-    const { step, autoClickTimeLeft } = this.state;
+    const { autoClickTimeLeft } = this.state;
     if (autoClickTimeLeft <= 0) {
       this.handleAutoClick();
       return;

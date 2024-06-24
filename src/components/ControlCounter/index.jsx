@@ -5,11 +5,13 @@ const ControlCounter = (props) => {
   const { setStep, step, handleAutoClick } = props;
   return (
     <div className={styles.controlCounter}>
-      <h3>Step: {step}</h3>
+      <h3>Current Step: {step}</h3>
       <input
         type="number"
         name="stepInput"
         value={step}
+        min="1"
+        max="1000000"
         onChange={({ target: { value } }) => {
           setStep(Number(value));
         }}
