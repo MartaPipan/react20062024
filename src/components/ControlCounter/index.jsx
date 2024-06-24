@@ -17,7 +17,6 @@ const ControlCounter = (props) => {
         }}
         className={styles.input}
       />
-      <button onClick={handleAutoClick}>AutoClick</button>
     </div>
   );
 };
