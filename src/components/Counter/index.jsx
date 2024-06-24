@@ -6,63 +6,36 @@ class Counter extends Component {
     super(props);
     this.state = {
       count: 0,
-      isAdd: true,
-      autoClickInterval: null,
-      autoClickTimeLeft: 30, // Tempo em segundos
+      mode: "add", // Modo inicial de adição
     };
   }
 
-  componentDidMount() {
-    this.startAutoClick(1000); // Chama a função a cada 1 segundo
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.state.autoClickInterval);
-  }
-
-  startAutoClick = (frequency) => {
-    const autoClickInterval = setInterval(this.autoClick, frequency);
-    this.setState({ autoClickInterval });
-  };
-
-  stopAutoClick = () => {
-    clearInterval(this.state.autoClickInterval);
-    this.setState({ autoClickInterval: null });
-  };
-
-  autoClick = () => {
-    const { count, isAdd, autoClickTimeLeft } = this.state;
-    if (autoClickTimeLeft <= 0) {
-      this.stopAutoClick();
-      return;
-    }
-
-    const newCount = isAdd ? count + this.props.step : count - this.props.step;
-    this.setState((prevState) => ({
-      count: newCount,
-      autoClickTimeLeft: prevState.autoClickTimeLeft - 1,
-    }));
+  handleCount = () => {
+    const { count, mode } = this.state;
+    const { step } = this.props;
+    const newCount = mode === "add" ? count + step : count - step;
+    this.setState({ count: newCount });
   };
 
   handleChangeMode = () => {
-    this.setState((prevState) => ({ isAdd: !prevState.isAdd }));
-  };
-
-  handleCount = () => {
-    this.setState((prevState) => {
-      const newCount = prevState.isAdd ? prevState.count + this.props.step : prevState.count - this.props.step;
-      return { count: newCount };
-    });
+    this.setState((prevState) => ({
+      mode: prevState.mode === "add" ? "subtract" : "add",
+    }));
   };
 
   render() {
-    const { count, isAdd, autoClickTimeLeft } = this.state;
+    const { count } = this.state;
+    const { autoClickTimeLeft } = this.props;
     return (
       <article className={styles.counter}>
         <h2>{count}</h2>
         <p>AutoClick Time Left: {autoClickTimeLeft}s</p>
-        <button onClick={this.handleCount}>{isAdd ? "Add" : "Sub"}</button>
-        <button onClick={this.handleChangeMode}>Change</button>
+        <div className={styles.controls}>
+          <button onClick={this.handleCount}>
+            {this.state.mode === "add" ? "Add" : "Subtract"}
+          </button>
+          <button onClick={this.handleChangeMode}>Change Mode</button>
+        </div>
       </article>
     );
   }

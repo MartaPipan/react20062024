@@ -1,8 +1,7 @@
 import React from "react";
 import styles from "./ControlCounter.module.css";
 
-const ControlCounter = (props) => {
-  const { setStep, step, handleAutoClick } = props;
+const ControlCounter = ({ step, setStep, handleAutoClick }) => {
   return (
     <div className={styles.controlCounter}>
       <h3>Current Step: {step}</h3>
@@ -12,11 +11,10 @@ const ControlCounter = (props) => {
         value={step}
         min="1"
         max="1000000"
-        onChange={({ target: { value } }) => {
-          setStep(Number(value));
-        }}
+        onChange={(e) => setStep(parseInt(e.target.value))}
         className={styles.input}
       />
+      <button onClick={handleAutoClick}>AutoClick</button>
     </div>
   );
 };

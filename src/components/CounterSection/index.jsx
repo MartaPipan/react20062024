@@ -10,11 +10,12 @@ class CounterSection extends Component {
       step: 1,
       autoClickInterval: null,
       autoClickTimeLeft: 30,
+      autoClickFrequency: 1000,
     };
   }
 
   componentDidMount() {
-    this.handleAutoClick();
+    this.startAutoClick();
   }
 
   componentWillUnmount() {
@@ -22,28 +23,38 @@ class CounterSection extends Component {
   }
 
   setStep = (newStep) => {
-    this.setState({ step: newStep });
+    if (newStep >= 1 && newStep <= 1000000) {
+      this.setState({ step: newStep });
+    } else {
+      alert("Step must be between 1 and 1,000,000");
+    }
+  };
+
+  startAutoClick = () => {
+    const { autoClickFrequency } = this.state;
+    const interval = setInterval(this.autoClick, autoClickFrequency);
+    this.setState({ autoClickInterval: interval });
   };
 
   handleAutoClick = () => {
     const { autoClickInterval } = this.state;
     if (autoClickInterval) {
       clearInterval(autoClickInterval);
-      this.setState({ autoClickInterval: null });
+      this.setState({ autoClickInterval: null, autoClickTimeLeft: 30 });
     } else {
-      const interval = setInterval(this.autoClick, 1000);
-      this.setState({ autoClickInterval: interval });
+      this.startAutoClick();
     }
   };
 
   autoClick = () => {
-    const { autoClickTimeLeft } = this.state;
+    const { autoClickTimeLeft, step } = this.state;
     if (autoClickTimeLeft <= 0) {
-      this.handleAutoClick();
+      clearInterval(this.state.autoClickInterval);
+      this.setState({ autoClickInterval: null });
       return;
     }
 
-    this.counterRef.handleCount();
+    this.counterRef.handleCount(step);
 
     this.setState((prevState) => ({
       autoClickTimeLeft: prevState.autoClickTimeLeft - 1,
@@ -51,10 +62,14 @@ class CounterSection extends Component {
   };
 
   render() {
-    const { step } = this.state;
+    const { step, autoClickTimeLeft } = this.state;
     return (
       <section className={styles.container}>
-        <Counter step={step} ref={(ref) => (this.counterRef = ref)} />
+        <Counter
+          step={step}
+          ref={(ref) => (this.counterRef = ref)}
+          autoClickTimeLeft={autoClickTimeLeft}
+        />
         <ControlCounter
           step={step}
           setStep={this.setStep}
