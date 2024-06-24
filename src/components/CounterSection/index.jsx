@@ -11,6 +11,8 @@ class CounterSection extends Component {
       autoClickInterval: null,
       autoClickTimeLeft: 30,
       autoClickFrequency: 1000,
+      count: 0,
+      mode: "add",
     };
   }
 
@@ -47,27 +49,35 @@ class CounterSection extends Component {
   };
 
   autoClick = () => {
-    const { autoClickTimeLeft, step } = this.state;
+    const { autoClickTimeLeft, step, count, mode } = this.state;
     if (autoClickTimeLeft <= 0) {
       clearInterval(this.state.autoClickInterval);
       this.setState({ autoClickInterval: null });
       return;
     }
 
-    this.counterRef.handleCount(step);
+    const newCount = mode === "add" ? count + step : count - step;
+    this.setState({
+      count: newCount,
+      autoClickTimeLeft: autoClickTimeLeft - 1,
+    });
+  };
 
+  handleChangeMode = () => {
     this.setState((prevState) => ({
-      autoClickTimeLeft: prevState.autoClickTimeLeft - 1,
+      mode: prevState.mode === "add" ? "subtract" : "add",
     }));
   };
 
   render() {
-    const { step, autoClickTimeLeft } = this.state;
+    const { step, autoClickTimeLeft, count, mode } = this.state;
     return (
       <section className={styles.container}>
         <Counter
-          step={step}
-          ref={(ref) => (this.counterRef = ref)}
+          count={count}
+          mode={mode}
+          handleCount={this.handleCount}
+          handleChangeMode={this.handleChangeMode}
           autoClickTimeLeft={autoClickTimeLeft}
         />
         <ControlCounter

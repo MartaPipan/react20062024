@@ -1,11 +1,11 @@
-
+import React from "react";
 import './App.css';
 import CounterSection from './components/CounterSection';
 
 function App() {
   return (
     <>
-      <CounterSection/>
+      <CounterSection />
     </>
   );
 }
