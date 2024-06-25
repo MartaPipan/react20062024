@@ -12,9 +12,12 @@ class UserLoader extends Component {
   }
     componentDidMount() {
         this.setState({ isPending: true });
-    fetch("https://randomuser.me/api/?results=5")
+    fetch("https://randomuser.me/api/?results=5&page1=1&seed=fpm2024-1")
       .then((response) => response.json())
-      .then((data) => {
+        .then((data) => {
+            if (data.error){
+              throw new Error(data.error)
+          }
         this.setState({ users: data.results });
       })
       .catch((error) => {
@@ -35,7 +38,12 @@ class UserLoader extends Component {
     }
     return (
       <section>
-        <h2>Users:</h2>
+            <h2>Users:</h2>
+            <div>
+                <button>&lt;</button> 
+                <span> 1 </span>
+                <button>&gt;</button>
+            </div>
         {users.length ? (
           <ul>{users.map(this.showUsers)}</ul>
         ) : (
