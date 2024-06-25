@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styles from "./Counter.module.css";
 
 const Counter = ({ count, mode, handleCount, handleChangeMode, autoClickTimeLeft }) => {
@@ -15,5 +16,14 @@ const Counter = ({ count, mode, handleCount, handleChangeMode, autoClickTimeLeft
     </article>
   );
 };
+
+Counter.propTypes = {
+  count: PropTypes.number.isRequired,
+  mode: PropTypes.oneOf(["add", "subtract"]).isRequired,
+  handleCount: PropTypes.func.isRequired,
+  handleChangeMode: PropTypes.func.isRequired,
+  autoClickTimeLeft: PropTypes.number.isRequired,
+};
+
 
 export default Counter;

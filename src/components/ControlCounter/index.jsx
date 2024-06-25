@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styles from "./ControlCounter.module.css";
 
 const ControlCounter = ({ step, setStep, handleAutoClick }) => {
@@ -17,6 +18,12 @@ const ControlCounter = ({ step, setStep, handleAutoClick }) => {
       <button onClick={handleAutoClick}>AutoClick</button>
     </div>
   );
+};
+
+ControlCounter.propTypes = {
+  step: PropTypes.number.isRequired,
+  setStep: PropTypes.func.isRequired,
+  handleAutoClick: PropTypes.func.isRequired,
 };
 
 export default ControlCounter;
