@@ -6,10 +6,10 @@ import styles from "./ControlCounter.module.css";
 const ControlCounter = ({ step, setStep, handleAutoClick }) => {
   // Функція для обробки зміни значення step
   const handleChange = (e) => {
-    const value = e.target.value;
+    const value = e.target.value;// Отримуємо значення з події зміни
     const numberValue = Number(value); 
-    setStep(numberValue);
-  };
+    setStep(numberValue);//Встановлюємо нове значення кроку
+};
 
   return (
     <div className={styles.controlCounter}>
