@@ -7,7 +7,7 @@ const ControlCounter = ({ step, setStep, handleAutoClick }) => {
   // Функція для обробки зміни значення step
   const handleChange = (e) => {
     const value = e.target.value;
-    const numberValue = Number(value.match(/\d+/)[0]); // Використовуємо регулярний вираз для витягнення чисел зі строки
+    const numberValue = Number(value); 
     setStep(numberValue);
   };
 
