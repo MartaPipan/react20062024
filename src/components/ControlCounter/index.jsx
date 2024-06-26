@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./ControlCounter.module.css";
 
+// Компонент ControlCounter отримує пропси з батьківського компонента CounterSection
 const ControlCounter = ({ step, setStep, handleAutoClick }) => {
   return (
     <div className={styles.controlCounter}>
@@ -12,7 +13,7 @@ const ControlCounter = ({ step, setStep, handleAutoClick }) => {
         value={step}
         min="1"
         max="1000000"
-        onChange={(e) => setStep(parseInt(e.target.value))}
+        onChange={(e) => setStep(Number(e.target.value))}
         className={styles.input}
       />
       <button onClick={handleAutoClick}>AutoClick</button>
@@ -21,9 +22,15 @@ const ControlCounter = ({ step, setStep, handleAutoClick }) => {
 };
 
 ControlCounter.propTypes = {
-  step: PropTypes.number.isRequired,
-  setStep: PropTypes.func.isRequired,
-  handleAutoClick: PropTypes.func.isRequired,
+  step: PropTypes.number.isRequired, // Крок повинен бути числом і є обов'язковим
+  setStep: PropTypes.func.isRequired, // setStep повинна бути функцією і є обов'язковою
+  handleAutoClick: PropTypes.func.isRequired, // handleAutoClick повинна бути функцією і є обов'язковою
 };
+
+ControlCounter.defaultProps = {
+  step: 1,
+  setStep: () => { },
+  handleAutoClick: ()=>{},
+}
 
 export default ControlCounter;
