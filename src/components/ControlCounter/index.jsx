@@ -4,6 +4,13 @@ import styles from "./ControlCounter.module.css";
 
 // Компонент ControlCounter отримує пропси з батьківського компонента CounterSection
 const ControlCounter = ({ step, setStep, handleAutoClick }) => {
+  // Функція для обробки зміни значення step
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const numberValue = Number(value.match(/\d+/)[0]); // Використовуємо регулярний вираз для витягнення чисел зі строки
+    setStep(numberValue);
+  };
+
   return (
     <div className={styles.controlCounter}>
       <h3>Current Step: {step}</h3>
@@ -13,7 +20,7 @@ const ControlCounter = ({ step, setStep, handleAutoClick }) => {
         value={step}
         min="1"
         max="1000000"
-        onChange={(e) => setStep(Number(e.target.value))}
+        onChange={handleChange}
         className={styles.input}
       />
       <button onClick={handleAutoClick}>AutoClick</button>
@@ -29,8 +36,8 @@ ControlCounter.propTypes = {
 
 ControlCounter.defaultProps = {
   step: 1,
-  setStep: () => { },
-  handleAutoClick: ()=>{},
-}
+  setStep: () => {},
+  handleAutoClick: () => {},
+};
 
 export default ControlCounter;
