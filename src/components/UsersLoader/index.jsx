@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { getUsers } from "../../api";
 
 class UserLoader extends Component {
   constructor(props) {
@@ -14,8 +15,7 @@ class UserLoader extends Component {
     load = () => {
             const { currentPage } = this.state;
     this.setState({ isPending: true });
-    fetch(`https://randomuser.me/api/?results=5&page=${currentPage}&seed=fpm2024-1`)
-      .then((response) => response.json())
+   getUsers(currentPage)
       .then((data) => {
         if (data.error) {
           throw new Error(data.error);
