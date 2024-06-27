@@ -2,15 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./ControlCounter.module.css";
 
-// Компонент ControlCounter отримує пропси з батьківського компонента CounterSection
 const ControlCounter = ({ step, setStep, handleAutoClick }) => {
-  // Функція для обробки зміни значення step
-  //способ захопити і обробити зміну значення в конкретному полі введення 
-  const handleChange = (e) => {
-    const value = e.target.value;//kонвертуємо введене значення в число
-    const numberValue = Number(value); 
-    setStep(numberValue);//Встановлюємо нове значення кроку
-};
+  const handleChange = ({ target: { value } }) => {
+    const numberValue = Number(value);
+
+    // Validate the step value
+    if (numberValue >= 1 && numberValue <= 1000000) {
+      setStep(numberValue);
+    }
+  };
 
   return (
     <div className={styles.controlCounter}>
@@ -30,21 +30,9 @@ const ControlCounter = ({ step, setStep, handleAutoClick }) => {
 };
 
 ControlCounter.propTypes = {
-  step: PropTypes.number.isRequired, // Крок повинен бути числом і є обов'язковим
-  setStep: PropTypes.func.isRequired, // setStep повинна бути функцією і є обов'язковою
-  handleAutoClick: PropTypes.func.isRequired, // handleAutoClick повинна бути функцією і є обов'язковою
-};
-
-ControlCounter.defaultProps = {
-  step: 1,
-  setStep: () => {},
-  handleAutoClick: () => {},
+  step: PropTypes.number.isRequired,
+  setStep: PropTypes.func.isRequired,
+  handleAutoClick: PropTypes.func.isRequired,
 };
 
 export default ControlCounter;
-
-
-
-/**Якщо в коді відсутня функція handleChange: Поле введення може бути присутнім на інтерфейсі користувача, але воно не матиме жодної пов'язаної зміни свого значення. Це означає, що користувач може вводити інформацію, але не буде механізму для реакції на ці зміни i буде неможливо взаємодіяти з введеними користувачем даними. Наприклад, якщо поле введення пов'язане з налаштуваннями або параметрами в реальному часі, зміни не будуть динамічно відображатися.
- * 
-*/

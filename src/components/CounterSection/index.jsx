@@ -17,42 +17,42 @@ class CounterSection extends Component {
   }
 
   componentDidMount() {
+    console.log("componentDidMount: startAutoClick");
     this.startAutoClick();
   }
 
   componentWillUnmount() {
+    console.log("componentWillUnmount: clearInterval");
     clearInterval(this.state.autoClickInterval);
   }
 
-  // Функція для встановлення нового значення step
   setStep = (newStep) => {
     const step = Number(newStep);
     if (step >= 1 && step <= 1000000) {
+      console.log("setStep:", step);
       this.setState({ step });
-    } else {
-      alert("Step must be between 1 and 1,000,000");
     }
   };
 
-  // Функція для початку автоматичного кліку
   startAutoClick = () => {
+    console.log("startAutoClick");
     const { autoClickFrequency } = this.state;
     const interval = setInterval(this.autoClick, autoClickFrequency);
     this.setState({ autoClickInterval: interval });
   };
 
-  // Функція для керування автоматичним кліком
   handleAutoClick = () => {
     const { autoClickInterval } = this.state;
     if (autoClickInterval) {
+      console.log("handleAutoClick: clearInterval");
       clearInterval(autoClickInterval);
       this.setState({ autoClickInterval: null, autoClickTimeLeft: 30 });
     } else {
+      console.log("handleAutoClick: startAutoClick");
       this.startAutoClick();
     }
   };
 
-  // Функція для обробки зміни лічильника
   handleCount = () => {
     this.setState((prevState) => {
       const { count, mode, step } = prevState;
@@ -61,10 +61,10 @@ class CounterSection extends Component {
     });
   };
 
-  // Функція для автоматичного кліку
   autoClick = () => {
+    console.log("autoClick executed");
     this.setState((prevState) => {
-      const { autoClickTimeLeft, step, count, mode } = prevState;
+      const { autoClickTimeLeft, count, mode, step } = prevState;
       if (autoClickTimeLeft <= 0) {
         clearInterval(prevState.autoClickInterval);
         return { autoClickInterval: null };
@@ -77,7 +77,6 @@ class CounterSection extends Component {
     });
   };
 
-  // Функція для зміни режиму (додавання/віднімання)
   handleChangeMode = () => {
     this.setState((prevState) => ({
       mode: prevState.mode === "add" ? "subtract" : "add",
@@ -104,9 +103,5 @@ class CounterSection extends Component {
     );
   }
 }
-
-CounterSection.propTypes = {
-  // Пропсів не потрібно для цього батьківського компонента, оскільки він не отримує зовнішніх пропсів.
-};
 
 export default CounterSection;
