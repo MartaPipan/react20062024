@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
-import CounterSection from "./components/CounterSection";
+import UserLoader from "./components/UsersLoader";
 
 function App() {
   return (
     <>
-      <CounterSection />
+      <UserLoader/>
     </>
   );
 }
