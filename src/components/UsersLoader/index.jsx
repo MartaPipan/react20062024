@@ -16,7 +16,7 @@ class UserLoader extends Component {
   load = () => {
     const { currentPage, currentResults } = this.state;
     this.setState({ isPending: true });
-    getUsers({ page: currentPage, currentResults, results: 5, nat: "gb" })
+    getUsers({ page: currentPage, results: currentResults, nat: "gb" })
       .then((data) => {
         if (data.error) {
           throw new Error(data.error);
@@ -34,7 +34,9 @@ class UserLoader extends Component {
     this.load();
   }
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.currentPage !== this.state.currentPage) {
+    if (prevState.currentPage !== this.state.currentPage ||
+      prevState.currentResults !== this.state.currentResults)
+    {
       this.load();
     }
   }
