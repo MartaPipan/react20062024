@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { getUsers } from "../../api";
 
 class UserLoader extends Component {
@@ -15,7 +14,7 @@ class UserLoader extends Component {
     load = () => {
             const { currentPage } = this.state;
     this.setState({ isPending: true });
-   getUsers(currentPage)
+      getUsers({ page:currentPage, results:5, nat:'gb'})
       .then((data) => {
         if (data.error) {
           throw new Error(data.error);
