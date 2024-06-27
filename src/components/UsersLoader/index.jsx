@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getUsers } from "../../api";
+import Spinner from "../Spinner";
 
 class UserLoader extends Component {
   constructor(props) {
@@ -54,7 +55,7 @@ class UserLoader extends Component {
   render() {
     const { users, isPending, error, currentPage } = this.state;
     if (isPending) {
-      return <div>Loading...</div>;
+      return <Spinner />;
     }
     if (error) {
       return <div>ERROR!!!</div>;
