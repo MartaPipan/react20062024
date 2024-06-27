@@ -21,6 +21,11 @@ class CounterSection extends Component {
     this.startAutoClick();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    // Adicionando log para verificar se o componente está sendo atualizado
+    console.log("componentDidUpdate: State updated");
+  }
+
   componentWillUnmount() {
     console.log("componentWillUnmount: clearInterval");
     clearInterval(this.state.autoClickInterval);
@@ -37,6 +42,9 @@ class CounterSection extends Component {
   startAutoClick = () => {
     console.log("startAutoClick");
     const { autoClickFrequency } = this.state;
+    if (this.state.autoClickInterval) {
+      clearInterval(this.state.autoClickInterval);
+    }
     const interval = setInterval(this.autoClick, autoClickFrequency);
     this.setState({ autoClickInterval: interval });
   };
@@ -85,6 +93,7 @@ class CounterSection extends Component {
 
   render() {
     const { step, autoClickTimeLeft, count, mode } = this.state;
+    console.log("render: step =", step, "autoClickTimeLeft =", autoClickTimeLeft, "count =", count, "mode =", mode);
     return (
       <section className={styles.container}>
         <Counter
