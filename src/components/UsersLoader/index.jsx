@@ -11,12 +11,13 @@ class UserLoader extends Component {
       error: null,
       currentPage: 1,
       currentResults: 5,
+      currentNat: 'gb'
     };
   }
   load = () => {
-    const { currentPage, currentResults } = this.state;
+    const { currentPage, currentResults,currentNat } = this.state;
     this.setState({ isPending: true });
-    getUsers({ page: currentPage, results: currentResults, nat: "gb" })
+    getUsers({ page: currentPage, results: currentResults, nat: currentNat})
       .then((data) => {
         if (data.error) {
           throw new Error(data.error);
@@ -35,7 +36,8 @@ class UserLoader extends Component {
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.currentPage !== this.state.currentPage ||
-      prevState.currentResults !== this.state.currentResults)
+      prevState.currentResults !== this.state.currentResults||
+      prevState.currentNat !== this.state.currentNat)
     {
       this.load();
     }
@@ -55,9 +57,10 @@ class UserLoader extends Component {
       return { currentPage: currentPage + 1 };
     });
   };
-  handlerResults = ({ target:{value}})=>{this.setState({currentResults:Number(value)})}
+  handlerResults = ({ target: { value } }) => { this.setState({ currentResults: Number(value) }) }
+    handlerNat = ({ target:{value}})=>{this.setState({currentNat:(value)})}
   render() {
-    const { users, isPending, error, currentPage, currentResults } = this.state;
+    const { users, isPending, error, currentPage, currentResults, currentNat} = this.state;
     if (isPending) {
       return <Spinner />;
     }
@@ -71,6 +74,12 @@ class UserLoader extends Component {
           <button onClick={this.prevPage}>&lt;</button>
           <span> {currentPage} </span>
           <button onClick={this.nextPage}>&gt;</button>
+          <select name="nat"value={currentNat} onChange={this.handlerNat}>
+            <option value="us">us</option>
+            <option value="dk">dk</option>
+            <option value="fr">fr</option>
+            <option value="gb">gb</option>
+          </select>
           <div>
             <label>
               <input
