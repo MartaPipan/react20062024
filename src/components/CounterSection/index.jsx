@@ -16,35 +16,22 @@ class CounterSection extends Component {
     };
   }
 
-  componentDidMount() {
-    console.log("componentDidMount: startAutoClick");
+ componentDidMount() {
     this.startAutoClick();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    // Adicionando log para verificar se o componente está sendo atualizado
-    console.log("componentDidUpdate: State updated");
-  }
-
+ }
+  
   componentWillUnmount() {
-    console.log("componentWillUnmount: clearInterval");
     clearInterval(this.state.autoClickInterval);
   }
 
   setStep = (newStep) => {
-    const step = Number(newStep);
-    if (step >= 1 && step <= 1000000) {
-      console.log("setStep:", step);
-      this.setState({ step });
-    }
+    if (newStep >= 1 && newStep <= 1000000) {
+      this.setState({ step: newStep });
+    } 
   };
 
   startAutoClick = () => {
-    console.log("startAutoClick");
     const { autoClickFrequency } = this.state;
-    if (this.state.autoClickInterval) {
-      clearInterval(this.state.autoClickInterval);
-    }
     const interval = setInterval(this.autoClick, autoClickFrequency);
     this.setState({ autoClickInterval: interval });
   };
@@ -52,48 +39,36 @@ class CounterSection extends Component {
   handleAutoClick = () => {
     const { autoClickInterval } = this.state;
     if (autoClickInterval) {
-      console.log("handleAutoClick: clearInterval");
       clearInterval(autoClickInterval);
       this.setState({ autoClickInterval: null, autoClickTimeLeft: 30 });
     } else {
-      console.log("handleAutoClick: startAutoClick");
       this.startAutoClick();
     }
   };
 
-  handleCount = () => {
-    this.setState((prevState) => {
-      const { count, mode, step } = prevState;
-      const newCount = mode === "add" ? count + step : count - step;
-      return { count: newCount };
+   autoClick = () => {
+    const { autoClickTimeLeft, step, count, mode } = this.state;
+    if (autoClickTimeLeft <= 0) {
+      clearInterval(this.state.autoClickInterval);
+      this.setState({ autoClickInterval: null });
+      return;
+    }
+     const newCount = mode === "add" ? count + step : count - step;
+    this.setState({
+      count: newCount,
+      autoClickTimeLeft: autoClickTimeLeft - 1,
     });
-  };
-
-  autoClick = () => {
-    console.log("autoClick executed");
-    this.setState((prevState) => {
-      const { autoClickTimeLeft, count, mode, step } = prevState;
-      if (autoClickTimeLeft <= 0) {
-        clearInterval(prevState.autoClickInterval);
-        return { autoClickInterval: null };
-      }
-      const newCount = mode === "add" ? count + step : count - step;
-      return {
-        count: newCount,
-        autoClickTimeLeft: autoClickTimeLeft - 1,
-      };
-    });
-  };
-
+   };
+  
   handleChangeMode = () => {
     this.setState((prevState) => ({
       mode: prevState.mode === "add" ? "subtract" : "add",
     }));
   };
-
-  render() {
+ 
+  
+   render() {
     const { step, autoClickTimeLeft, count, mode } = this.state;
-    console.log("render: step =", step, "autoClickTimeLeft =", autoClickTimeLeft, "count =", count, "mode =", mode);
     return (
       <section className={styles.container}>
         <Counter
@@ -112,5 +87,4 @@ class CounterSection extends Component {
     );
   }
 }
-
 export default CounterSection;
