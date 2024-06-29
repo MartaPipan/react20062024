@@ -6,36 +6,41 @@ import styles from "./CounterSection.module.css";
 class CounterSection extends Component {
   constructor() {
     super();
+    // Ініціалізація стану компонента
     this.state = {
       step: 1,
       autoClickInterval: null,
       autoClickTimeLeft: 30,
       autoClickFrequency: 1000,
       count: 0,
-      mode: "add",
+      mode: "add", // Режим: додавання або віднімання
     };
   }
 
- componentDidMount() {
-    this.startAutoClick();
- }
-  
+  componentDidMount() {
+    this.startAutoClick(); // Запуск автоматичного кліку після монтання
+  }
+
   componentWillUnmount() {
+    // Очищення інтервалу перед розмонтуванням
     clearInterval(this.state.autoClickInterval);
   }
 
+  // Функція для встановлення кроку
   setStep = (newStep) => {
     if (newStep >= 1 && newStep <= 1000000) {
       this.setState({ step: newStep });
-    } 
+    }
   };
 
+  // Функція для запуску автоматичного кліку
   startAutoClick = () => {
     const { autoClickFrequency } = this.state;
     const interval = setInterval(this.autoClick, autoClickFrequency);
     this.setState({ autoClickInterval: interval });
   };
 
+  // Функція для обробки автоматичного кліку
   handleAutoClick = () => {
     const { autoClickInterval } = this.state;
     if (autoClickInterval) {
@@ -46,28 +51,36 @@ class CounterSection extends Component {
     }
   };
 
-   autoClick = () => {
+  // Функція автоматичного кліку
+  autoClick = () => {
     const { autoClickTimeLeft, step, count, mode } = this.state;
     if (autoClickTimeLeft <= 0) {
       clearInterval(this.state.autoClickInterval);
       this.setState({ autoClickInterval: null });
       return;
     }
-     const newCount = mode === "add" ? count + step : count - step;
+    const newCount = mode === "add" ? count + step : count - step;
     this.setState({
       count: newCount,
       autoClickTimeLeft: autoClickTimeLeft - 1,
     });
-   };
-  
+  };
+
+  // Функція для зміни режиму
   handleChangeMode = () => {
     this.setState((prevState) => ({
       mode: prevState.mode === "add" ? "subtract" : "add",
     }));
   };
- 
-  
-   render() {
+
+  // Функція для ручного збільшення/зменшення
+  handleCount = () => {
+    const { count, step, mode } = this.state;
+    const newCount = mode === "add" ? count + step : count - step;
+    this.setState({ count: newCount });
+  };
+
+  render() {
     const { step, autoClickTimeLeft, count, mode } = this.state;
     return (
       <section className={styles.container}>
@@ -87,4 +100,5 @@ class CounterSection extends Component {
     );
   }
 }
+
 export default CounterSection;

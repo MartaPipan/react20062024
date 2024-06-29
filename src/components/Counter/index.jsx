@@ -14,9 +14,11 @@ const Counter = ({
       <h2>{count}</h2>
       <p>AutoClick Time Left: {autoClickTimeLeft}s</p>
       <div className={styles.controls}>
-        <button onClick={() => { console.log("Button Clicked: handleCount"); handleCount(); }}>
+        {/* Кнопка для ручного збільшення/зменшення */}
+        <button onClick={handleCount}>
           {mode === "add" ? "Add" : "Subtract"}
         </button>
+        {/* Кнопка для зміни режиму */}
         <button onClick={handleChangeMode}>Change Mode</button>
       </div>
     </article>
