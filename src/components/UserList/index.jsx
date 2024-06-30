@@ -6,22 +6,30 @@ const UserList = ({ users }) => {
         return <p>empty users</p>;
     }
 
-const showUsers = (user) => <li key={user.login.uuid}>{user.name.first}</li>        
+    const showUsers = (user) => <li key={user.login.uuid}>{user.name.first}</li>;
+
     return (
         <div>
-            {users.length ? (
-                <ul>{users.map(this.showUsers)}</ul>
-            ) : (
-                <p>empty users</p>
-            )}
+            <ul>
+                {users.map(user => (
+                    showUsers(user)
+                ))}
+            </ul>
         </div>
     );
 };
 
- UserList.propTypes = {
-     users: PropTypes.arrayOf(this.showUsers).isRequired,
+UserList.propTypes = {
+    users: PropTypes.arrayOf(
+        PropTypes.shape({
+            login: PropTypes.shape({
+                uuid: PropTypes.string.isRequired
+            }),
+            name: PropTypes.shape({
+                first: PropTypes.string.isRequired
+            })
+        })
+    ).isRequired
 };
 
 export default UserList;
-
-
