@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getUsers } from "../../api";
 import Spinner from "../Spinner";
+import Pagination from "./Pagination";
 
 
 
@@ -44,7 +45,7 @@ class UserLoader extends Component {
       this.load();
     }
   }
-
+//створюємо допоміжні функції для оновлення стану, які передаємо у дочірні компоненти.
    setCurrentPage = (page) => {
     this.setState({ currentPage: page });
   };
@@ -87,10 +88,11 @@ class UserLoader extends Component {
     return (
       <section>
         <h2>Users:</h2>
-        <div>
-          <button onClick={this.prevPage}>&lt;</button>
-          <span> {currentPage} </span>
-          <button onClick={this.nextPage}>&gt;</button>
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={this.setCurrentPage}
+        />
+
           <select name="nat"value={currentNat} onChange={this.handlerNat}>
             <option value="us">us</option>
             <option value="dk">dk</option>
@@ -123,7 +125,7 @@ class UserLoader extends Component {
               />15
             </label>
           </div>
-        </div>
+        </Pagi>
         {users.length ? (
           <ul>{users.map(this.showUsers)}</ul>
         ) : (
