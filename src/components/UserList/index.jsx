@@ -6,7 +6,7 @@ const UserList = ({ users }) => {
         return <p>empty users</p>;
     }
 
-        
+const showUsers = (user) => <li key={user.login.uuid}>{user.name.first}</li>        
     return (
         <div>
             {users.length ? (
@@ -19,7 +19,9 @@ const UserList = ({ users }) => {
 };
 
  UserList.propTypes = {
-     users: PropTypes.oneOf(this.showUsers).isRequired,
+     users: PropTypes.arrayOf(this.showUsers).isRequired,
 };
 
 export default UserList;
+
+

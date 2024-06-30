@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { getUsers } from "../../api";
 import Spinner from "../Spinner";
-import Pagination from "./Pagination";
-import UserList from "./UserList";
-import UserFilters from "./UserFilters";
+import Pagination from "../Pagination";
+import UserList from "../UserList";
+import UserFilters from "../UserFilters";
 
 
 class UserLoader extends Component {
@@ -47,7 +47,6 @@ class UserLoader extends Component {
       this.load();
     }
   }
-  //створюємо допоміжні функції для оновлення стану, які передаємо у дочірні компоненти.
   setCurrentPage = (page) => {
     this.setState({ currentPage: page });
   };
