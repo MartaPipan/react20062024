@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
 const UserList = ({ users }) => {
     if (!users.length) {
@@ -17,5 +18,8 @@ const UserList = ({ users }) => {
     );
 };
 
+ UserList.propTypes = {
+     users: PropTypes.oneOf(this.showUsers).isRequired,
+};
 
 export default UserList;
