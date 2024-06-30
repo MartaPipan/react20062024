@@ -44,23 +44,38 @@ class UserLoader extends Component {
       this.load();
     }
   }
-  showUsers = (user) => <li key={user.login.uuid}>{user.name.first}</li>;
-  prevPage = () => {
-    this.setState((state, props) => {
-      const { currentPage } = state;
-      if (currentPage > 1) {
-        return { currentPage: currentPage - 1 };
-      }
-    });
+
+   setCurrentPage = (page) => {
+    this.setState({ currentPage: page });
   };
-  nextPage = () => {
-    this.setState((state) => {
-      const { currentPage } = state;
-      return { currentPage: currentPage + 1 };
-    });
+
+  setCurrentResults = (results) => {
+    this.setState({ currentResults: results });
   };
-  handlerResults = ({ target: { value } }) => { this.setState({ currentResults: Number(value) }) }
-    handlerNat = ({ target:{value}})=>{this.setState({currentNat:(value)})}
+
+  setCurrentNat = (nat) => {
+    this.setState({ currentNat: nat });
+  };
+
+  //showUsers = (user) => <li key={user.login.uuid}>{user.name.first}</li>;
+  //prevPage = () => {
+  //  this.setState((state, props) => {
+  //    const { currentPage } = state;
+  //    if (currentPage > 1) {
+  //      return { currentPage: currentPage - 1 };
+  //    }
+  // });
+  // };
+  //nextPage = () => {
+  //  this.setState((state) => {
+  //    const { currentPage } = state;
+  //    return { currentPage: currentPage + 1 };
+  //  });
+  //};
+  //handlerResults = ({ target: { value } }) => { this.setState({ currentResults: Number(value) }) }
+  //handlerNat = ({ target: { value } }) => { this.setState({ currentNat: (value) }) }
+  
+ 
   render() {
     const { users, isPending, error, currentPage, currentResults, currentNat} = this.state;
     if (isPending) {
