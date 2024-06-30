@@ -1,7 +1,7 @@
 import React from 'react';
 
 const UserList = ({ users }) => {
-    if (users.length) {
+    if (!users.length) {
         return <p>empty users</p>;
     }
 

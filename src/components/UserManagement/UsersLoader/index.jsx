@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { getUsers } from "../../../api";
-import Spinner from "../../Spinner";
+import { getUsers } from "../../api";
+import Spinner from "../Spinner";
 import Pagination from "./Pagination";
 import UserList from "./UserList";
 
@@ -129,7 +129,7 @@ class UserLoader extends Component {
           </label>
         </div>
 
-        <UserList />
+        <UserList users={users} />
       </section>
     );
   }
