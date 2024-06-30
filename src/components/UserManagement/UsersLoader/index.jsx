@@ -3,6 +3,8 @@ import { getUsers } from "../../api";
 import Spinner from "../Spinner";
 import Pagination from "./Pagination";
 import UserList from "./UserList";
+import UserFilters from "./UserFilters";
+
 
 class UserLoader extends Component {
   constructor(props) {
@@ -93,41 +95,10 @@ class UserLoader extends Component {
           setCurrentPage={this.setCurrentPage}
         />
 
-        <select name="nat" value={currentNat} onChange={this.handlerNat}>
-          <option value="us">us</option>
-          <option value="dk">dk</option>
-          <option value="fr">fr</option>
-          <option value="gb">gb</option>
-        </select>
-        <div>
-          <label>
-            <input
-              type="radio"
-              value={5}
-              checked={currentResults === 5}
-              onChange={this.handlerResults}
-            />
-            5
-          </label>
-          <label>
-            <input
-              type="radio"
-              value={10}
-              checked={currentResults === 10}
-              onChange={this.handlerResults}
-            />
-            10
-          </label>
-          <label>
-            <input
-              type="radio"
-              value={15}
-              checked={currentResults === 15}
-              onChange={this.handlerResults}
-            />
-            15
-          </label>
-        </div>
+        <UserFilters currentResults={currentResults}
+          setCurrentResults={this.setCurrentResults }
+          currentNat={currentNat}
+          setCurrentNat={ this.setCurrentNat} />
 
         <UserList users={users} />
       </section>
