@@ -6,16 +6,13 @@ const NationalitySelector= ({
     currentNat,
     setCurrentNat,
 }) => {
-
-        const handleNatChange = (event) => {
-            setCurrentNat(event.target.value);
-        };
-
+    const handlerNat = ({ target: { value } }) => setCurrentNat(value);
+    
         return (
             <select
                 name="nat"
                 value={currentNat}
-                onChange={handleNatChange}
+                onChange={handlerNat}
                 className={styles['select-nat']}
             >
                 <option value="us">us</option>

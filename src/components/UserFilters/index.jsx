@@ -4,26 +4,12 @@ import styles from "./UserFilters.module.scss";
 const UserFilters = ({
   currentResults,
   setCurrentResults,
-  currentNat,
-  setCurrentNat,
 }) => {
   const handlerResults = ({ target: { value } }) =>
     setCurrentResults(Number(value));
-  const handlerNat = ({ target: { value } }) => setCurrentNat(value);
 
   return (
     <div className={styles["user-filters-container"]}>
-      <select
-        name="nat"
-        value={currentNat}
-        onChange={handlerNat}
-        className={styles["select-nat"]}
-      >
-        <option value="us">us</option>
-        <option value="dk">dk</option>
-        <option value="fr">fr</option>
-        <option value="gb">gb</option>
-      </select>
       <div>
         <label className={styles["filter-label"]}>
           <input
