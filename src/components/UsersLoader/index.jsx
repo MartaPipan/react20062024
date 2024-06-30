@@ -4,6 +4,8 @@ import Spinner from "../Spinner";
 import Pagination from "../Pagination";
 import UserList from "../UserList";
 import UserFilters from "../UserFilters";
+import styles from './UsersLoader.module.scss';
+
 
 
 class UserLoader extends Component {
@@ -84,10 +86,10 @@ class UserLoader extends Component {
       return <Spinner />;
     }
     if (error) {
-      return <div>ERROR!!!</div>;
+      return <div className={styles['error-message ']}>ERROR!!!</div>;
     }
     return (
-      <section>
+      <section className={styles['user-loader-section']}>
         <h2>Users:</h2>
         <Pagination
           currentPage={currentPage}
