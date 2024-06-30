@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./UserFilters.module.scss"
 
 const UserFilters = ({
   currentResults,
@@ -7,7 +8,7 @@ const UserFilters = ({
   setCurrentNat,
 }) => {
   return (
-    <div>
+    <div className={styles['user-filters-container']}>
       <select name="nat" value={currentNat} onChange={this.handlerNat}>
         <option value="us">us</option>
         <option value="dk">dk</option>
@@ -15,7 +16,7 @@ const UserFilters = ({
         <option value="gb">gb</option>
       </select>
       <div>
-        <label>
+        <label className={styles['filter-label']}>
           <input
             type="radio"
             value={5}
@@ -24,7 +25,7 @@ const UserFilters = ({
           />
           5
         </label>
-        <label>
+        <label className={styles['filter-label']}>
           <input
             type="radio"
             value={10}
@@ -33,7 +34,7 @@ const UserFilters = ({
           />
           10
         </label>
-        <label>
+        <label className={styles['filter-label']}>
           <input
             type="radio"
             value={15}
