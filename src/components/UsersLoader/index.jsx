@@ -4,11 +4,9 @@ import Spinner from "../Spinner";
 import Pagination from "../Pagination";
 import UserList from "../UserList";
 import UserFilters from "../UserFilters";
-import styles from './UsersLoader.module.scss';
+import styles from "./UsersLoader.module.scss";
 
-
-
-class UserLoader extends Component {
+class UsersLoader extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,6 +18,7 @@ class UserLoader extends Component {
       currentNat: "gb",
     };
   }
+
   load = () => {
     const { currentPage, currentResults, currentNat } = this.state;
     this.setState({ isPending: true });
@@ -37,9 +36,11 @@ class UserLoader extends Component {
         this.setState({ isPending: false });
       });
   };
+
   componentDidMount() {
     this.load();
   }
+
   componentDidUpdate(prevProps, prevState) {
     if (
       prevState.currentPage !== this.state.currentPage ||
@@ -49,6 +50,7 @@ class UserLoader extends Component {
       this.load();
     }
   }
+
   setCurrentPage = (page) => {
     this.setState({ currentPage: page });
   };
@@ -61,24 +63,6 @@ class UserLoader extends Component {
     this.setState({ currentNat: nat });
   };
 
-  //showUsers = (user) => <li key={user.login.uuid}>{user.name.first}</li>;
-  //prevPage = () => {
-  //  this.setState((state, props) => {
-  //    const { currentPage } = state;
-  //    if (currentPage > 1) {
-  //      return { currentPage: currentPage - 1 };
-  //    }
-  // });
-  // };
-  //nextPage = () => {
-  //  this.setState((state) => {
-  //    const { currentPage } = state;
-  //    return { currentPage: currentPage + 1 };
-  //  });
-  //};
-  //handlerResults = ({ target: { value } }) => { this.setState({ currentResults: Number(value) }) }
-  //handlerNat = ({ target: { value } }) => { this.setState({ currentNat: (value) }) }
-
   render() {
     const { users, isPending, error, currentPage, currentResults, currentNat } =
       this.state;
@@ -86,27 +70,25 @@ class UserLoader extends Component {
       return <Spinner />;
     }
     if (error) {
-      return <div className={styles['error-message ']}>ERROR!!!</div>;
+      return <div className={styles["error-message"]}>ERROR!!!</div>;
     }
     return (
-      <section className={styles['user-loader-section']}>
+      <section className={styles["user-loader-section"]}>
         <h2>Users:</h2>
         <Pagination
           currentPage={currentPage}
           setCurrentPage={this.setCurrentPage}
         />
-
-        <UserFilters currentResults={currentResults}
-          setCurrentResults={this.setCurrentResults }
+        <UserFilters
+          currentResults={currentResults}
+          setCurrentResults={this.setCurrentResults}
           currentNat={currentNat}
-          setCurrentNat={ this.setCurrentNat} />
-
+          setCurrentNat={this.setCurrentNat}
+        />
         <UserList users={users} />
       </section>
     );
   }
 }
 
-UserLoader.propTypes = {};
-
-export default UserLoader;
+export default UsersLoader;
