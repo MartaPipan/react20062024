@@ -13,7 +13,12 @@ const UserFilters = ({
 
   return (
     <div className={styles["user-filters-container"]}>
-      <select name="nat" value={currentNat} onChange={handlerNat}>
+      <select
+        name="nat"
+        value={currentNat}
+        onChange={handlerNat}
+        className={styles["select-nat"]}
+      >
         <option value="us">us</option>
         <option value="dk">dk</option>
         <option value="fr">fr</option>
