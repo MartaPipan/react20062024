@@ -4,6 +4,7 @@ import Spinner from "../Spinner";
 import Pagination from "../Pagination";
 import UserList from "../UserList";
 import UserFilters from "../UserFilters";
+import NationalitySelector from "../NationalitySelector";
 import styles from "./UsersLoader.module.scss";
 
 class UsersLoader extends Component {
@@ -75,17 +76,19 @@ class UsersLoader extends Component {
     return (
       <section className={styles["user-loader-section"]}>
         <h2>Users:</h2>
+        <UserFilters
+          currentResults={currentResults}
+          setCurrentResults={this.setCurrentResults}
+        />
+        <UserList users={users} />
+        <NationalitySelector
+          currentNat={currentNat}
+          setCurrentNat={this.setCurrentNat} />
+        
         <Pagination
           currentPage={currentPage}
           setCurrentPage={this.setCurrentPage}
         />
-        <UserFilters
-          currentResults={currentResults}
-          setCurrentResults={this.setCurrentResults}
-          currentNat={currentNat}
-          setCurrentNat={this.setCurrentNat}
-        />
-        <UserList users={users} />
       </section>
     );
   }
