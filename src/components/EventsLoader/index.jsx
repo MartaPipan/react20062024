@@ -12,7 +12,7 @@ class EventsLoader extends Component {
     };
   }
   componentDidMount() {
-      this.state({ isPending: true });
+      this.setState({ isPending: true });
       getEvents()
     fetch("/data/events.json")
       .then((response) => response.json())

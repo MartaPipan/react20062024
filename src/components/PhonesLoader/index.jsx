@@ -12,12 +12,12 @@ class PhonesLoader extends Component {
     };
   }
   componentDidMount() {
-      this.state({ isPending: true });
+      this.setState({ isPending: true });
       getPhones()
-    fetch("/data/events.json")
+    fetch("/data/phones.json")
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ events: data });
+        this.setState({ phones: data });
       })
       .catch((error) => {
         this.setState({ error: error });
