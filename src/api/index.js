@@ -21,6 +21,12 @@ export const getUsers = (options = {}) => {
         ...options
     }
     const queryStr = queryString.stringify(finallyOptions);
+
     return fetch(`https://randomuser.me/api/?${queryStr}`)
         .then((response) => response.json())
 };
+
+export const detEvents = (options = {}) => {
+    return fetch('/data/events.json')
+    .then((response)=>response.json())
+}

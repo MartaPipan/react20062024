@@ -6,6 +6,7 @@ import UsersLoaderPage from './pages/UsersLoaderPage';
 import CounterPage from "./pages/CounterPage";
 
 import ErrorPage from "./pages/ErrorPage"
+import EventsLoader from "./components/EventsLoader";
 
 
 
@@ -13,7 +14,8 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header/>
+        <Header />
+        <EventsLoader />
         <main>
           <Routes>
             <Route path="/" element={<HomePage/>}></Route>
