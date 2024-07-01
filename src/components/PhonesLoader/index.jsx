@@ -1,19 +1,19 @@
 import React, { Component } from "react";
-import { getEvents } from '../../api';
+import { getPhones } from '../../api';
 
 
-class EventsLoader extends Component {
+class PhonesLoader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: [],
+      phones: [],
       isPending: false,
       error: null,
     };
   }
   componentDidMount() {
       this.state({ isPending: true });
-      getEvents()
+      getPhones()
     fetch("/data/events.json")
       .then((response) => response.json())
       .then((data) => {
@@ -28,7 +28,7 @@ class EventsLoader extends Component {
   }
 
   render() {
-    const { events, isPending, error } = this.state;
+    const { phones, isPending, error } = this.state;
     if (error) {
       return <div>Error!!!</div>;
     }
@@ -37,9 +37,9 @@ class EventsLoader extends Component {
     }
     return (
       <ul>
-        {events.map(({ id, title, date }) => (
+        {phones.map(({ id, name, brand, price }) => (
           <li key={id}>
-            {title} date:{}
+            {name} {brand} price:{price}
           </li>
         ))}
       </ul>
@@ -47,4 +47,4 @@ class EventsLoader extends Component {
   }
 }
 
-export default EventsLoader;
+export default PhonesLoader;

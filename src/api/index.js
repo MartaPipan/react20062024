@@ -26,7 +26,12 @@ export const getUsers = (options = {}) => {
         .then((response) => response.json())
 };
 
-export const detEvents = (options = {}) => {
+export const getEvents = (options = {}) => {
     return fetch('/data/events.json')
     .then((response)=>response.json())
+}
+
+export const getPhones = (options = {}) => {
+    return fetch('data/phones.json')
+    .then((response) => response.json())
 }

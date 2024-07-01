@@ -10,9 +10,9 @@
     border: none;
     cursor: pointer;
     border-radius: 5px;
-}
 
-.pagination-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
+    &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
 }

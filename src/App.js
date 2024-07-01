@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
+import "./App.css"
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
 import UsersLoaderPage from './pages/UsersLoaderPage';
@@ -7,6 +7,7 @@ import CounterPage from "./pages/CounterPage";
 
 import ErrorPage from "./pages/ErrorPage"
 import EventsLoader from "./components/EventsLoader";
+import PhonesLoader from "./components/PhonesLoader";
 
 
 
@@ -16,6 +17,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <EventsLoader />
+        <PhonesLoader />
         <main>
           <Routes>
             <Route path="/" element={<HomePage/>}></Route>
