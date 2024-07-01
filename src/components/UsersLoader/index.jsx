@@ -84,7 +84,6 @@ class UsersLoader extends Component {
         <NationalitySelector
           currentNat={currentNat}
           setCurrentNat={this.setCurrentNat} />
-        
         <Pagination
           currentPage={currentPage}
           setCurrentPage={this.setCurrentPage}

@@ -1,11 +1,14 @@
-import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import WindowWork from "./components/WindowWork";
-import UsersLoader from "./components/UsersLoader";
-import CounterSection from "./components/CounterSection/index";
+import "./App.css";
 import Header from "./components/Header";
+import HomePage from "./pages/HomePage";
+import UsersLoaderPage from './pages/UsersLoaderPage';
+import CounterPage from "./pages/CounterPage";
 
-import ErrorPage from "./components/ErrorPage";
+import ErrorPage from "./pages/ErrorPage"
+
+
+
 function App() {
   return (
     <>
@@ -13,9 +16,9 @@ function App() {
         <Header/>
         <main>
           <Routes>
-            <Route path="/" element={<WindowWork />}></Route>
-            <Route path="/users" element={<UsersLoader />}></Route>
-            <Route path="/counter" element={<CounterSection />}></Route>
+            <Route path="/" element={<HomePage/>}></Route>
+            <Route path="/users" element={<UsersLoaderPage />}></Route>
+            <Route path="/counter" element={<CounterPage />}></Route>
 
             <Route path="*" element={<ErrorPage />}></Route>
           </Routes>
