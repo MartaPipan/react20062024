@@ -21,15 +21,16 @@ class App extends Component{
         name: 'Brad',
         email: 'brad@gmail.com',
         password: 123,
-        ava:'/images/avatarname.png'
-      }
-    }
+        ava: '/images/avatarname.png',
+      },
+    };
   }
   render() {
+    const { user } = this.state;
     return (
       <>
         <BrowserRouter>
-          <Header />
+          <Header user={user} />
           <main>
             <Routes>
               <Route path="/" element={<HomePage />}></Route>

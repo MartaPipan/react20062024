@@ -1,10 +1,11 @@
 import React from 'react';
 import Menu from "../Menu"
 
-const Header = () => {
+const Header = ({user:{ava}}) => {
     return (
         <header>
-           <Menu/> 
+            <Menu />
+            <img src={ava}  alt='ava' width={50}/>
         </header>
     );
 }
