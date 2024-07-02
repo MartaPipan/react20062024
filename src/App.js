@@ -13,15 +13,17 @@ import LoaderPage from "./pages/LoaderPage";
 import EventsBlock from "./pages/LoaderPage/EventsBlock";
 import PhonesBlock from "./pages/LoaderPage/PhonesBlock";
 
+
 class App extends Component{
   constructor(props) {
     super(props);
     this.state = {
       user: {
+        id:4,
         name: 'Brad',
         email: 'brad@gmail.com',
         password: 123,
-        ava: '/images/avatarname.png',
+        ava: '/images/noname.png',
       },
     };
   }
@@ -33,7 +35,7 @@ class App extends Component{
           <Header user={user} />
           <main>
             <Routes>
-              <Route path="/" element={<HomePage />}></Route>
+              <Route path="/" element={<HomePage user={ user} />}></Route>
               <Route path="/users" element={<UsersLoaderPage />}></Route>
               <Route path="/counter" element={<CounterPage />}></Route>
 
