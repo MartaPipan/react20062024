@@ -1,3 +1,5 @@
+
+import React, { Component } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
@@ -11,7 +13,7 @@ import LoaderPage from "./pages/LoaderPage";
 import EventsBlock from "./pages/LoaderPage/EventsBlock";
 import PhonesBlock from "./pages/LoaderPage/PhonesBlock";
 
-class App {
+class App extends Component{
   render() {
     return (
       <>
