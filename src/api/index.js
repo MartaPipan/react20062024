@@ -32,6 +32,6 @@ export const getEvents = (options = {}) => {
 }
 
 export const getPhones = (options = {}) => {
-    return fetch('data/phones.json')
+    return fetch('/data/phones.json')
     .then((response) => response.json())
 }
