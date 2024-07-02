@@ -14,6 +14,17 @@ import EventsBlock from "./pages/LoaderPage/EventsBlock";
 import PhonesBlock from "./pages/LoaderPage/PhonesBlock";
 
 class App extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {
+        name: 'Brad',
+        email: 'brad@gmail.com',
+        password: 123,
+        ava:'/images/avatarname.png'
+      }
+    }
+  }
   render() {
     return (
       <>
