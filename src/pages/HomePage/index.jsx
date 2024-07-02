@@ -1,9 +1,12 @@
 import React from "react";
 import WindowWork from "../../components/WindowWork";
-const HomePage = () => {
+import Tree from "../../components/Tree";
+
+const HomePage = (user) => {
   return (
     <div>
       <WindowWork />
+      <Tree user={user} />
     </div>
   );
 };

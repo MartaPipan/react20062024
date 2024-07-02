@@ -24,6 +24,7 @@ class App extends Component {
         password: 123,
         ava: "/images/noname.png",
       },
+      
     };
   }
   render() {
@@ -35,7 +36,7 @@ class App extends Component {
             <Header />
             <main>
               <Routes>
-                <Route path="/" element={<HomePage />}></Route>
+                <Route path="/" element={<HomePage value={user} />}></Route>
                 <Route path="/users" element={<UsersLoaderPage />}></Route>
                 <Route path="/counter" element={<CounterPage />}></Route>
 
