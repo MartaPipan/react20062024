@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  nav > ul {
+    list-style: none;
+    li {
+      display: inline-block;
+      margin-right: 10px;
+      a {
+        display: inline-block;
+        padding: 10px;
+      }
+    }
+  }
+  img {
+    height: 70px;
+    object-fit: cover;
+  }
+  
+}
+

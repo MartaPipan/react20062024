@@ -1,15 +1,17 @@
 import React from "react";
 import Menu from "../Menu";
 import { UserContext } from "../../contexts/index";
+import styles from './Header.module.scss';
 
 const Header = () => {
   return (
     <UserContext.Consumer>
       {({ava}) => {
         return (
-          <header>
+          <header className={styles.header}>
             <Menu />
-            <img src={ava} alt="ava" width={50} />
+            <button onClick={()=>{}}>light/dark</button>
+            <img src={ava} alt="ava" />
           </header>
         );
       }}

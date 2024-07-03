@@ -11,7 +11,10 @@ import ErrorPage from "./pages/ErrorPage";
 import LoaderPage from "./pages/LoaderPage";
 import EventsBlock from "./pages/LoaderPage/EventsBlock";
 import PhonesBlock from "./pages/LoaderPage/PhonesBlock";
-import { UserContext } from "./contexts";
+import { UserContext, ThemeContext} from "./contexts";
+import CONSTANTS from "./constants";
+const { THEME } = CONSTANTS;
+
 
 class App extends Component {
   constructor(props) {
@@ -24,9 +27,12 @@ class App extends Component {
         password: 123,
         ava: "/images/noname.png",
       },
-      
+      theme: THEME.LIGHT
     };
   }
+  setTheme = () => {
+    const { theme } = this.state;
+    this.setState({theme:theme === THEME.LIGHT?THEME.DARK:THEME.LIGHT})}
   render() {
     const { user } = this.state;
     return (
