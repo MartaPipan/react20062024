@@ -34,9 +34,10 @@ class App extends Component {
     const { theme } = this.state;
     this.setState({theme:theme === THEME.LIGHT?THEME.DARK:THEME.LIGHT})}
   render() {
-    const { user } = this.state;
+    const { user, theme} = this.state;
     return (
       <>
+        <ThemeContext.Provider value={[theme,this.setTheme]}>
         <UserContext.Provider value={user}>
           <BrowserRouter>
             <Header />
@@ -56,7 +57,8 @@ class App extends Component {
             </main>
             <footer>2024</footer>
           </BrowserRouter>
-        </UserContext.Provider>
+          </UserContext.Provider>
+          </ThemeContext.Provider>
       </>
     );
   }
