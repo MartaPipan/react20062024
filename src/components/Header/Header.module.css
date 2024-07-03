@@ -1,7 +1,21 @@
+
+/**
+@use'/scr/common/styles/templates' as*;
+.light{
+  color: black;
+  background-color: white;
+}
+.dark{
+  color: white;
+  background-color:black;
+}
+*/
 .header {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: 5px;
+
 }
 .header nav > ul {
   list-style: none;

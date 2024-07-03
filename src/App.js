@@ -27,12 +27,13 @@ class App extends Component {
         password: 123,
         ava: "/images/noname.png",
       },
-      theme: THEME.LIGHT
+      theme: THEME.LIGHT,
     };
   }
   setTheme = () => {
     const { theme } = this.state;
-    this.setState({theme:theme === THEME.LIGHT?THEME.DARK:THEME.LIGHT})}
+    this.setState({ theme: theme === THEME.LIGHT ? THEME.DARK : THEME.LIGHT });
+  };
   render() {
     const { user, theme} = this.state;
     return (

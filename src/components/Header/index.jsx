@@ -1,21 +1,38 @@
 import React from "react";
+import cx from "classnames";
+
+import styles from "./Header.module.scss";
+
+import { UserContext, ThemeContext } from "../../contexts/index";
+
 import Menu from "../Menu";
-import { UserContext } from "../../contexts/index";
-import styles from './Header.module.scss';
+
+import CONSTANTS from "../../constants";
+const { THEME } = CONSTANTS;
 
 const Header = () => {
   return (
-    <UserContext.Consumer>
-      {({ava}) => {
+    <ThemeContext.Consumer>
+      {([theme, setTheme]) => {
+        const classNames = cx(styles.header,{
+          [styles.light]: theme === THEME.LIGHT,
+          [styles.dark]: theme ===THEME.DARK,
+        })
         return (
-          <header className={styles.header}>
-            <Menu />
-            <button onClick={()=>{}}>light/dark</button>
-            <img src={ava} alt="ava" />
-          </header>
+          <UserContext.Consumer>
+            {({ ava }) => {
+              return (
+                <header className={classNames}>
+                  <Menu />
+                  <button onClick={() => {setTheme()}}>{theme === THEME.LIGHT ? 'light' : 'dark'}</button>
+                  <img src={ava} alt="ava" />
+                </header>
+              );
+            }}
+          </UserContext.Consumer>
         );
       }}
-    </UserContext.Consumer>
+    </ThemeContext.Consumer>
   );
 };
 
