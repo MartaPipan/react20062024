@@ -24,7 +24,7 @@ const Header = () => {
               return (
                 <header className={classNames}>
                   <Menu />
-                  <button onClick={() => {setTheme()}}>{theme === THEME.LIGHT ? 'light' : 'dark'}</button>
+                  <button onClick={() => {setTheme()}}>{theme === THEME.LIGHT ? 'dark':'light'}</button>
                   <img src={ava} alt="ava" />
                 </header>
               );

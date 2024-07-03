@@ -1,19 +1,19 @@
-@use '/src/common/styles/templates' as *;
+@use "/src/common/styles/templates" as *;
 
- .light {
-   @extend %light;
- }
+.light {
+  @extend %light;
+}
 
- .dark {
-   @extend %dark;
- }
+.dark {
+  @extend %dark;
+}
 
 .header {
   display: flex;
   justify-content: center;
   margin-top: 5px;
 
-  nav>ul {
+  nav > ul {
     list-style: none;
 
     li {
@@ -27,9 +27,17 @@
     }
   }
 
+  button {
+      font-size: 20px;
+      /* Aumenta o tamanho da fonte do botão */
+      padding:  10px;
+      /* Aumenta o tamanho do botão */
+    }
+
   img {
     height: 70px;
+    padding: 10px;
     object-fit: cover;
   }
- 
+
 }
