@@ -1,4 +1,17 @@
-// Example mixin for button styles
+/*
+@use /src/common
+ @ include
+*/
+
+@mixin borderRadius($radius){
+    border-radius:$radius;
+}
+
+@mixin flexAlignment($jc, $ai){
+    justify-content: jc;
+    align-items: ai;
+}
+
 @mixin button-styles($bg-color, $hover-color, $active-color) {
     padding: 10px 20px;
     font-size: 24px;
@@ -15,3 +28,6 @@
         background-color: $active-color;
     }
 }
+
+
+

@@ -1,5 +1,6 @@
-@import './common/colors';
-@import './common/variables';
+@use '/src/common/styles/colors' as*;
+@use '/src/common/styles/variables' as*;
+
 
 .app {
     text-align: center;
