@@ -1,3 +1,6 @@
+@use '/src/common/styles/colors' as *;
+
+
 .custom-loader {
   width: 50px;
   height: 50px;
@@ -11,13 +14,13 @@
     grid-area: 1/1;
     border: 8px solid;
     border-radius: 50%;
-    border-color: #766df4 #766df4 transparent transparent;
+    border-color: $secondary-color $secondary-color transparent transparent;
     mix-blend-mode: darken;
     animation: s4 1s infinite linear;
   }
 
   &::after {
-    border-color: transparent transparent #e4e4ed #e4e4ed;
+    border-color: transparent transparent $light-color $light-color;
     animation-direction: reverse;
   }
 }

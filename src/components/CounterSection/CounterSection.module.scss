@@ -1,6 +1,9 @@
+@use '/src/common/styles/colors' as *;
+@use '/src/common/styles/variables' as*;
+
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: $padding;
 }

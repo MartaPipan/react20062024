@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "./ControlCounter.module.css";
+import styles from "./ControlCounter.module.scss";
 
 const ControlCounter = ({ step, setStep, handleAutoClick }) => {
   return (

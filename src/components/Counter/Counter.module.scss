@@ -1,35 +1,27 @@
+@use '/src/common/styles/colors' as c;
+@use '/src/common/styles/mixin' as*;
+@use '/src/common/styles/variables' as*;
+
 .counter {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #67b1ed;
-    padding: 20px;
-    border-radius: 20px;
+    background-color: c.$primary-color;
+    padding: $padding;
+    border-radius: $border-radius;
     box-shadow: 0 0 10px rgba(4, 3, 30, 0.1);
 
     h2 {
-        color: #181043;
+        color: c.$secondary-color;
     }
 
     p {
         font-size: 18px;
-        color: #181043;
+        color: c.$secondary-color;
     }
 
     button {
         margin: 10px;
-        padding: 10px 20px;
-        font-size: 24px;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-
-        &:hover {
-            background-color: #847878;
-        }
-
-        &:active {
-            background-color: #ccc;
-        }
+        @include button-styles(c.$primary-color, c.$dark-color, #ccc);
     }
 }

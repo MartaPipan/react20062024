@@ -1,0 +1,12 @@
+@import './common/colors';
+@import './common/variables';
+
+.app {
+    text-align: center;
+}
+
+.main {
+    padding: $padding;
+    background-color: $light-color;
+    min-height: 100vh;
+}

@@ -1,0 +1,33 @@
+@use '/src/common/styles/colors' as *;
+@use '/src/common/styles/mixin' as*;
+@use '/src/common/styles/variables' as*;
+
+.controlCounter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: $padding;
+  max-width: 280px;
+  margin: 0 auto;
+
+  h3 {
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: $secondary-color;
+  }
+
+  input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  button {
+    margin-top: 20px;
+    @include button-styles($primary-color, $dark-color, #ccc);
+  }
+}

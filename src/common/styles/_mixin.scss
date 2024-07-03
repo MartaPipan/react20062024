@@ -1,0 +1,17 @@
+// Example mixin for button styles
+@mixin button-styles($bg-color, $hover-color, $active-color) {
+    padding: 10px 20px;
+    font-size: 24px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: $bg-color;
+
+    &:hover {
+        background-color: $hover-color;
+    }
+
+    &:active {
+        background-color: $active-color;
+    }
+}

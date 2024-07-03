@@ -1,3 +1,6 @@
+@use '/src/common/styles/colors' as *;
+@use '/src/common/styles/variables' as*;
+
 .pagination-container {
     margin-top: 20px;
 }
