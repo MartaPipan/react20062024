@@ -1,4 +1,6 @@
 @use "/src/common/styles/templates" as *;
+@use '/src/common/styles/mixin' as*;
+
 
 .light {
   @extend %light;
@@ -9,12 +11,38 @@
 }
 
 .header {
-  display: flex;
-  justify-content: center;
-  margin-top: 5px;
 
-  nav > ul {
+  @include flex-center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+
+  nav>ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      /* Define a distância igual entre os links */
+  
+  nav ul {
+    display: flex;
+    justify-content: center;
     list-style: none;
+    padding: 0;
+  }
+
+
+  nav ul li a {
+    text-decoration: none;
+    color: #007bff;
+  }
+
+  nav ul li a.active {
+    font-weight: bold;
+    color: #0056b3;
+  }
+
+
+
 
     li {
       display: inline-block;
@@ -28,9 +56,10 @@
   }
 
   button {
-      font-size: 20px;
+    height: auto;
+    font-size: 20px;
       /* Aumenta o tamanho da fonte do botão */
-      padding:  10px;
+      margin-left: 100px;
       /* Aumenta o tamanho do botão */
     }
 
