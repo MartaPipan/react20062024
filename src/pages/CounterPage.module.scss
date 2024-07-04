@@ -1,0 +1,19 @@
+@use "/src/common/styles/templates" as *;
+@use '/src/common/styles/mixin' as*;
+@use '/src/common/styles/variables' as*;
+
+
+.light {
+    @extend %light;
+}
+
+.dark {
+    @extend %dark;
+}
+
+.header {
+    font-size: $font-size-base;
+    padding: $padding-light;
+    text-align: center;
+
+}
