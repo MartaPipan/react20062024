@@ -1,0 +1,41 @@
+@use "/src/common/styles/templates" as *;
+@use "/src/common/styles/mixin" as *;
+@use "/src/common/styles/variables" as *;
+
+.light {
+  @extend %light;
+}
+
+.dark {
+  @extend %dark;
+}
+
+.header {
+  padding: 20px;
+  text-align: center;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+
+    li {
+      display: inline;
+      margin-right: 20px;
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        font-size: 32px;
+        font-weight: bold;
+        padding: 10px;
+        transition: color 0.3s;
+
+        &:hover {
+          color: #007bff;
+        }
+      }
+    }
+  }
+}
+
