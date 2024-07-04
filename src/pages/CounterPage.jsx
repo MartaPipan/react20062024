@@ -1,29 +1,27 @@
 import React from "react";
 import cx from 'classnames';
 import styles from './CounterPage.module.scss'
-import { ThemeContext} from "../contexts";
+import { ThemeContext } from "../contexts";
 import CounterSection from "../components/CounterSection";
-import CONSTANTS from '../constants';
-const { THEME } = CONSTANTS; 
+import CONSTANTS from "../constants";
+const { THEME } = CONSTANTS;
 
 const CounterPage = () => {
-  return (
-    <>
-      <ThemeContext.Consumer>
-        {([theme]) => {
-          const classNames = cx(styles.header, {
-            [styles.light]: theme === THEME.LIGHT,
-            [styles.dark]: theme === THEME.DARK,
-          });
-          return (
-            <header className={classNames}
-            > <CounterSection />
-            </header>
-          );
-        }}
-      </ThemeContext.Consumer>
-    </>
-  );
+  const renderCounterPage = ([theme, setTheme]) => {
+    const isLight = theme === THEME.LIGHT;
+    const classNames = cx(styles.header, {
+      [styles.light]: isLight,
+      [styles.dark]: !isLight,
+    });
+    return (
+      <header className={classNames}>
+        <CounterSection />
+      </header>
+    );
+  };
+  return <ThemeContext.Consumer>{renderCounterPage}</ThemeContext.Consumer>
 };
 
+
 export default CounterPage;
+

@@ -1,33 +1,31 @@
-import React from 'react';
+import React from "react";
 import cx from 'classnames';
-import styles from './LoaderPage.module.scss'
-import { ThemeContext} from "../contexts";
+import styles from './LoaderPage.module.scss';
 import UsersLoader from "../components/UsersLoader";
-import CONSTANTS from '../constants';
-const { THEME } = CONSTANTS; 
-
+import { ThemeContext } from "../contexts";
+import CONSTANTS from "../constants";
+const { THEME } = CONSTANTS;
 
 const UsersLoaderPage = () => {
-return (
-    <>
-      <ThemeContext.Consumer>
-        {([theme]) => {
-          const classNames = cx(styles.header, {
-            [styles.light]: theme === THEME.LIGHT,
-            [styles.dark]: theme === THEME.DARK,
-          });
-          return (
-            <header className={classNames}
-            > <UsersLoader />
-            </header>
-          );
-        }}
-      </ThemeContext.Consumer>
-    </>
+  const renderUserLoaderPage = ([theme, setTheme]) => {
+    const isLight = theme === THEME.LIGHT;
+    const classNames = cx(styles.page, {
+      [styles.light]: isLight,
+      [styles.dark]: !isLight,
+    });
+
+    return (
+      <div className={classNames}>
+        <UsersLoader />
+      </div>
+    );
+  };
+
+  return (
+    <ThemeContext.Consumer>
+      {renderUserLoaderPage}
+    </ThemeContext.Consumer>
   );
 };
 
-
 export default UsersLoaderPage;
-
-

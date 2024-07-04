@@ -1,6 +1,6 @@
 @use "/src/common/styles/templates" as *;
 @use '/src/common/styles/mixin' as*;
-
+@use '/src/common/styles/variables' as*;
 
 .light {
     @extend %light;
