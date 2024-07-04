@@ -1,6 +1,5 @@
 @use "/src/common/styles/templates" as *;
 @use '/src/common/styles/mixin' as*;
-@use '/src/common/styles/variables' as*;
 
 
 .light {
@@ -10,7 +9,6 @@
 .dark {
     @extend %dark;
 }
-
 
 .header {
     font-size: $font-size-base;

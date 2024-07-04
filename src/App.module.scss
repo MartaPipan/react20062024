@@ -1,13 +1,20 @@
 @use '/src/common/styles/colors' as*;
 @use '/src/common/styles/variables' as*;
-
+@import './common/colors';
+@import './common/variables';
 
 .app {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .main {
+    flex-grow: 1;
     padding: $padding;
     background-color: $light-color;
-    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

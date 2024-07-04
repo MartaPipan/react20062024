@@ -11,6 +11,7 @@ import ErrorPage from "./pages/ErrorPage";
 import LoaderPage from "./pages/LoaderPage";
 import EventsBlock from "./pages/LoaderPage/EventsBlock";
 import PhonesBlock from "./pages/LoaderPage/PhonesBlock";
+import Footer from "./components/Footer/Footer";
 import { UserContext, ThemeContext} from "./contexts";
 import CONSTANTS from "./constants";
 const { THEME } = CONSTANTS;
@@ -55,8 +56,8 @@ class App extends Component {
 
                 <Route path="*" element={<ErrorPage />}></Route>
               </Routes>
-            </main>
-            <footer>2024</footer>
+              </main>
+              <Footer /> 
           </BrowserRouter>
           </UserContext.Provider>
           </ThemeContext.Provider>

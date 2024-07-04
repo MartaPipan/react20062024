@@ -1,0 +1,9 @@
+@use "/src/common/styles/colors" as *;
+
+.footer {
+    background-color: $blue-dark-color;
+    color: $light-color;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+}

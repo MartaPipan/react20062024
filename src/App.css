@@ -1,5 +1,18 @@
+html,body{
+  height: 100%;
+  margin: 1px 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  
+}
+* {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
+ 
 }
 
 .App-logo {
@@ -70,5 +83,5 @@ nav ul li a.active {
 
 footer {
   text-align: center;
-  padding: 10px 0;
+  padding: 0px 0;
 }
