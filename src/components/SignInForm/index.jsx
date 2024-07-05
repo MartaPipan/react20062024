@@ -31,7 +31,7 @@ class SignInForm extends Component {
     this.setState({ [name]: value, [`is${name}Valid`]: !value.includes(' ') });
 
   render() {
-    const { login, email, password, isemailValid, ispasswordValid, isloginValid } = this.state;
+    const { login, email, password, isemailValid } = this.state;
     const emailClasses = cx({
       [styles.valid]: isemailValid,
       [styles.invalid]: !isemailValid,
