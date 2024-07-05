@@ -1,7 +1,7 @@
 import React from "react";
 import cx from 'classnames';
 import styles from './CounterPage.module.scss'
-import { ThemeContext } from "../contexts";
+import { WithTheme } from "../components/HOCs";
 import CounterSection from "../components/CounterSection";
 import CONSTANTS from "../constants";
 const { THEME } = CONSTANTS;
@@ -19,13 +19,6 @@ const CounterPage = ({theme}) => {
       </header>
     );
 };
-  
-const WithTheme =(InnerComponent)=> () => {
-  return (
-    <ThemeContext.Consumer> {([theme, setTheme]) => <InnerComponent theme={theme} setTheme={setTheme} />}</ThemeContext.Consumer>
-);
-};
-
 
 export default WithTheme(CounterPage);
 

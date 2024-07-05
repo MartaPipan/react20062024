@@ -2,13 +2,12 @@ import React from "react";
 import cx from 'classnames';
 import styles from './LoaderPage.module.scss';
 import { NavLink, Outlet } from "react-router-dom";
-import { ThemeContext } from "../../contexts";
 import CONSTANTS from "../../constants";
+import { WithTheme } from '../../components/HOCs/index';
 const { THEME } = CONSTANTS;
 
 
-const LoaderPage = () => {
-    const renderLoaderPage = ([theme, setTheme]) => {
+const LoaderPage = ({theme}) => {
     const isLight = theme === THEME.LIGHT;
     const classNames = cx(styles.header, {
       [styles.light]: isLight,
@@ -27,7 +26,6 @@ const LoaderPage = () => {
       </header>
     );
   };
-  return <ThemeContext>{renderLoaderPage}</ThemeContext>
-};     
+   
 
-export default LoaderPage;
+export default WithTheme(LoaderPage);

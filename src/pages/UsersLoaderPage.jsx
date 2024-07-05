@@ -2,7 +2,7 @@ import React from "react";
 import cx from 'classnames';
 import styles from './LoaderPage.module.scss';
 import UsersLoader from "../components/UsersLoader";
-import { ThemeContext } from "../contexts";
+import { WithTheme } from "../components/HOCs";
 import CONSTANTS from "../constants";
 const { THEME } = CONSTANTS;
 
@@ -20,12 +20,4 @@ const UsersLoaderPage = ({ theme }) => {
   );
 };
 
-const UsersLoaderPageWithTheme = () => {
-  return (
-    <ThemeContext.Consumer>
-      {([theme, setTheme]) => <UsersLoaderPage theme={theme} setTheme={setTheme} />}
-    </ThemeContext.Consumer>
-  );
-};
-
-export default UsersLoaderPageWithTheme;
+export default WithTheme(UsersLoaderPage);
