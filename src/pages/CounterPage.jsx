@@ -2,7 +2,7 @@ import React from "react";
 import cx from 'classnames';
 import styles from './CounterPage.module.scss'
 import CounterSection from "../components/CounterSection";
-import { WithTheme } from "../components/HOCs";
+import { withTheme } from "../components/HOCs";
 import CONSTANTS from "../constants";
 const { THEME } = CONSTANTS;
 
@@ -20,5 +20,5 @@ const CounterPage = ({theme}) => {
     );
 };
 
-export default WithTheme(CounterPage);
+export default withTheme(CounterPage);
 

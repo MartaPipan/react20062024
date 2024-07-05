@@ -1,7 +1,7 @@
 import { ThemeContext, UserContext } from "../../contexts";
 
 // HOC for ThemeContext
-export const WithTheme = (InnerComponent) => (props) => {
+export const withTheme = (InnerComponent) => (props) => {
   return (
     <ThemeContext.Consumer>
       {([theme, setTheme]) => (
@@ -12,7 +12,7 @@ export const WithTheme = (InnerComponent) => (props) => {
 };
 
 // HOC for UserContext
-export const WithUser = (InnerComponent) => (props) => {
+export const withUser = (InnerComponent) => (props) => {
   return (
     <UserContext.Consumer>
       {(user) => (

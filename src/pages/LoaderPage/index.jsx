@@ -2,7 +2,7 @@ import React from "react";
 import cx from 'classnames';
 import styles from './LoaderPage.module.scss';
 import { NavLink, Outlet } from "react-router-dom";
-import { WithTheme } from '../../components/HOCs/index';
+import { withTheme } from '../../components/HOCs/index';
 import CONSTANTS from "../../constants";
 const { THEME } = CONSTANTS;
 
@@ -28,4 +28,4 @@ const LoaderPage = ({theme}) => {
   };
    
 
-export default WithTheme(LoaderPage);
+export default withTheme(LoaderPage);

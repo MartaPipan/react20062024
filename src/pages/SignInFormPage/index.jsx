@@ -2,7 +2,7 @@ import React from "react";
 import cx from 'classnames';
 import styles from './SignInFormPage.module.scss';
 import SignInForm from "../../components/SignInForm";
-import { WithTheme } from "../../components/HOCs";
+import { withTheme } from "../../components/HOCs";
 import CONSTANTS from '../../constants';
 const { THEME } = CONSTANTS;
 
@@ -20,4 +20,4 @@ const SignInFormPage = ({ theme }) => {
   );
 };
 
-export default WithTheme(SignInFormPage);
+export default withTheme(SignInFormPage);

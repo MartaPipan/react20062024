@@ -1,5 +1,5 @@
 import React from "react";
-import { WithUser } from "../../HOCs";
+import { withUser } from "../../HOCs";
 
 const UsersCard = ({ user: { id=0, name='Bred', email='bred@gmail.com', password='qwerty', ava="/images/noname.png" } }) => {
 
@@ -17,4 +17,4 @@ const UsersCard = ({ user: { id=0, name='Bred', email='bred@gmail.com', password
 };
 
 
-export default WithUser(UsersCard);
+export default withUser(UsersCard);

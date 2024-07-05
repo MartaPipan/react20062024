@@ -6,7 +6,7 @@ import { mdiWhiteBalanceSunny, mdiThemeLightDark } from '@mdi/js';
 import styles from "./Header.module.scss";
 import Menu from "../Menu";
 
-import {WithTheme, WithUser } from "../HOCs";
+import {withTheme, withUser } from "../HOCs";
 
 import CONSTANTS from "../../constants";
 const { THEME } = CONSTANTS;
@@ -32,4 +32,4 @@ const currentIconColor=theme === THEME.LIGHT ? mdiThemeLightDark : mdiWhiteBalan
   );
 };
           
-export default WithTheme(WithUser(Header));
+export default withTheme(withUser(Header));

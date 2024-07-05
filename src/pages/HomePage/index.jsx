@@ -3,7 +3,7 @@ import cx from 'classnames';
 import styles from './HomePage.module.scss';
 import WindowWork from "../../components/WindowWork";
 import Tree from "../../components/Tree";
-import { WithTheme } from "../../components/HOCs";
+import { withTheme } from "../../components/HOCs";
 import CONSTANTS from '../../constants';
 const { THEME } = CONSTANTS;
 
@@ -23,4 +23,4 @@ const HomePage = ({ theme }) => {
 };
 
 
-export default WithTheme(HomePage);
+export default withTheme(HomePage);
