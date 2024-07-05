@@ -1,8 +1,8 @@
 import React from "react";
-import { UserContext } from '../../../contexts/index';
+import { WithUser } from "../../HOCs";
 
-const UsersCard = () => {
-  const renderUser = ({ id, name, email, password, ava }) => {
+const UsersCard = ({ user: { id=0, name='Bred', email='bred@gmail.com', password='qwerty', ava="/images/noname.png" } }) => {
+
       return (
     <article>
       <h3>
@@ -15,12 +15,6 @@ const UsersCard = () => {
     </article>
   );
 };
-  return (
-    <UserContext.Consumer>
-      {renderUser}
-    </UserContext.Consumer>
-  )
-}
 
 
-export default UsersCard;
+export default WithUser(UsersCard);

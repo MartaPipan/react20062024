@@ -1,8 +1,8 @@
 import React from "react";
 import cx from 'classnames';
 import styles from './CounterPage.module.scss'
-import { WithTheme } from "../components/HOCs";
 import CounterSection from "../components/CounterSection";
+import { WithTheme } from "../components/HOCs";
 import CONSTANTS from "../constants";
 const { THEME } = CONSTANTS;
 

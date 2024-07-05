@@ -5,7 +5,6 @@ import WindowWork from "../../components/WindowWork";
 import Tree from "../../components/Tree";
 import { WithTheme } from "../../components/HOCs";
 import CONSTANTS from '../../constants';
-
 const { THEME } = CONSTANTS;
 
 const HomePage = ({ theme }) => {

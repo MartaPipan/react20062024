@@ -2,8 +2,8 @@ import React from "react";
 import cx from 'classnames';
 import styles from './LoaderPage.module.scss';
 import { NavLink, Outlet } from "react-router-dom";
-import CONSTANTS from "../../constants";
 import { WithTheme } from '../../components/HOCs/index';
+import CONSTANTS from "../../constants";
 const { THEME } = CONSTANTS;
 
 
