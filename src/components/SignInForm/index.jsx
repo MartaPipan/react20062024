@@ -1,68 +1,27 @@
-import React, { Component } from "react";
-import cx from 'classnames';
-import styles from "./SignInForm.module.scss";
+import React from "react";
+import * as Yup from 'yup';
 
-const initialState = {
-  email: "",
-  password: "",
-  login: "",
-  isemailValid: true,
-  ispasswordValid: true,
-  isloginValid: true,
+
+const SHEMA USER = Yup.object({
+  firstName: Yup.string().trim().required().min(3).max(20),
+  lastName: Yup.string().trim().required().min(3).max(20),
+  email: Yup.string().trim().email().required(),
+  password: Yup.string().trim().matches(/[a-z0-9]{8-16}/),
+  age: Yup.number().min(18).max(100).integer().required(),
+  isMale: Yup.boolean(),
+})
+
+
+const SignInForm = () => {
+  const user = {
+    firstName: 'Alan',
+  lastName:'Alan',
+  email: 'alan@gmail.com',
+  password: '123',
+  age: 32,
+  isMale: true,
+  }
+  console.log(SCHEMA_USER.isValidSync(user));
+  return <></>
 };
-
-class SignInForm extends Component {
-  constructor() {
-    super();
-    this.state = {
-      ...initialState,
-    };
-  }
-
-  handlerSubmit = (event) => {
-    event.preventDefault();
-    console.log(event.target.login.value);
-    console.log(event.target.email.value);
-    console.log(event.target.password.value);
-    this.setState({ ...initialState });
-  };
-
-  handlerChange = ({ target: { name, value } }) =>
-    this.setState({ [name]: value, [`is${name}Valid`]: !value.includes(' ') });
-
-  render() {
-    const { login, email, password, isemailValid } = this.state;
-    const emailClasses = cx({
-      [styles.valid]: isemailValid,
-      [styles.invalid]: !isemailValid,
-    })
-    return (
-      <form className={styles.formContainer} onSubmit={this.handlerSubmit}>
-        <input
-          type="text"
-          name="login"
-          placeholder="login"
-          value={login}
-          onChange={this.handlerChange}
-        />
-        <input className={emailClasses}
-          type="email"
-          name="email"
-          placeholder="email"
-          value={email}
-          onChange={this.handlerChange}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          value={password}
-          onChange={this.handlerChange}
-        />
-        <input type="submit" value="sign in" />
-      </form>
-    );
-  }
-}
-
 export default SignInForm;
