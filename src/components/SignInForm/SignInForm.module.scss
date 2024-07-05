@@ -5,8 +5,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 350px;
+    margin: auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid $blue-light-color;
     border-radius: 5px;
     background-color: #f9f9f9;
 }
@@ -14,12 +16,12 @@
 .formContainer input {
     margin: 10px 0;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid $blue-light-color;
     border-radius: 3px;
 }
 
 .formContainer input[type="submit"] {
-    background-color: #4caf50;
+    background-color: $blue-light-color;
     color: white;
     border: none;
     cursor: pointer;
@@ -27,4 +29,12 @@
 
 .formContainer input[type="submit"]:hover {
     background-color: #45a049;
+}
+
+.valid{
+    background-color:$form-background-color;
+}
+
+.invalid{
+    background-color:$error-color;
 }

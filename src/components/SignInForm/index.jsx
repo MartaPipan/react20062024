@@ -1,10 +1,14 @@
 import React, { Component } from "react";
+import cx from 'classnames';
 import styles from "./SignInForm.module.scss";
 
 const initialState = {
   email: "",
   password: "",
   login: "",
+  isemailValid: true,
+  ispasswordValid: true,
+  isloginValid: true,
 };
 
 class SignInForm extends Component {
@@ -24,10 +28,14 @@ class SignInForm extends Component {
   };
 
   handlerChange = ({ target: { name, value } }) =>
-    this.setState({ [name]: value });
+    this.setState({ [name]: value, [`is${name}Valid`]: !value.includes(' ') });
 
   render() {
-    const { login, email, password } = this.state;
+    const { login, email, password, isemailValid, ispasswordValid, isloginValid } = this.state;
+    const emailClasses = cx({
+      [styles.valid]: isemailValid,
+      [styles.invalid]: !isemailValid,
+    })
     return (
       <form className={styles.formContainer} onSubmit={this.handlerSubmit}>
         <input
@@ -37,7 +45,7 @@ class SignInForm extends Component {
           value={login}
           onChange={this.handlerChange}
         />
-        <input
+        <input className={emailClasses}
           type="email"
           name="email"
           placeholder="email"
