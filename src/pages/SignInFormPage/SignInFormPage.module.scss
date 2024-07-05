@@ -1,0 +1,34 @@
+@use "/src/common/styles/templates" as *;
+@use '/src/common/styles/mixin' as*;
+@use '/src/common/styles/variables' as*;
+
+/* SignInFormPage.module.scss */
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+}
+
+.light {
+    background-color: white;
+    color: black;
+}
+
+.dark {
+    background-color: black;
+    color: white;
+}.light {
+    @extend %light;
+}
+
+.dark {
+    @extend %dark;
+}
+
+.header {
+    font-size: $font-size-large;
+    padding: $padding-light;
+    text-align: center;
+
+}
