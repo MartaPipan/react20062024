@@ -6,26 +6,26 @@ import { ThemeContext } from "../contexts";
 import CONSTANTS from "../constants";
 const { THEME } = CONSTANTS;
 
-const UsersLoaderPage = () => {
-  const renderUserLoaderPage = ([theme, setTheme]) => {
-    const isLight = theme === THEME.LIGHT;
-    const classNames = cx(styles.page, {
-      [styles.light]: isLight,
-      [styles.dark]: !isLight,
-    });
-
-    return (
-      <div className={classNames}>
-        <UsersLoader />
-      </div>
-    );
-  };
+const UsersLoaderPage = ({ theme }) => {
+  const isLight = theme === THEME.LIGHT;
+  const classNames = cx(styles.page, {
+    [styles.light]: isLight,
+    [styles.dark]: !isLight,
+  });
 
   return (
+    <div className={classNames}>
+      <UsersLoader />
+    </div>
+  );
+};
+
+const UsersLoaderPageWithTheme = () => {
+  return (
     <ThemeContext.Consumer>
-      {renderUserLoaderPage}
+      {([theme, setTheme]) => <UsersLoaderPage theme={theme} setTheme={setTheme} />}
     </ThemeContext.Consumer>
   );
 };
 
-export default UsersLoaderPage;
+export default UsersLoaderPageWithTheme;

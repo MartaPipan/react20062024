@@ -6,22 +6,26 @@ import CounterSection from "../components/CounterSection";
 import CONSTANTS from "../constants";
 const { THEME } = CONSTANTS;
 
-const CounterPage = () => {
-  const renderCounterPage = ([theme, setTheme]) => {
+const CounterPage = ({theme}) => {
     const isLight = theme === THEME.LIGHT;
     const classNames = cx(styles.header, {
       [styles.light]: isLight,
       [styles.dark]: !isLight,
     });
+  
     return (
       <header className={classNames}>
         <CounterSection />
       </header>
     );
-  };
-  return <ThemeContext.Consumer>{renderCounterPage}</ThemeContext.Consumer>
+};
+  
+const WithTheme =(InnerComponent)=> () => {
+  return (
+    <ThemeContext.Consumer> {([theme, setTheme]) => <InnerComponent theme={theme} setTheme={setTheme} />}</ThemeContext.Consumer>
+);
 };
 
 
-export default CounterPage;
+export default WithTheme(CounterPage);
 

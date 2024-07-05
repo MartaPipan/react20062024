@@ -5,26 +5,30 @@ import { ThemeContext } from "../../contexts";
 import WindowWork from "../../components/WindowWork";
 import Tree from "../../components/Tree";
 import CONSTANTS from '../../constants';
+
 const { THEME } = CONSTANTS;
 
-const HomePage = () => {
-   const renderHomePage = ([theme, setTheme]) => {
-    const isLight = theme === THEME.LIGHT;
-    const classNames = cx(styles.header, {
-      [styles.light]: isLight,
-      [styles.dark]: !isLight,
-    });
-    return (
-      <div className={classNames}>
-        <WindowWork />
-        <Tree />
-      </div>
-    );
-  };
+const HomePage = ({ theme }) => {
+  const isLight = theme === THEME.LIGHT;
+  const classNames = cx(styles.page, {
+    [styles.light]: isLight,
+    [styles.dark]: !isLight,
+  });
 
   return (
-    <ThemeContext.Consumer>{renderHomePage}</ThemeContext.Consumer>
+    <div className={classNames}>
+      <WindowWork />
+      <Tree />
+    </div>
   );
 };
 
-export default HomePage;
+const WithTheme =(InnerComponent)=> () => {
+  return (
+    <ThemeContext.Consumer>
+      {([theme, setTheme]) => <InnerComponent theme={theme} setTheme={setTheme} />}
+    </ThemeContext.Consumer>
+  );
+};
+
+export default WithTheme(HomePage);
