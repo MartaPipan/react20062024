@@ -37,10 +37,10 @@ class App extends Component {
     this.setState({ theme: theme === THEME.LIGHT ? THEME.DARK : THEME.LIGHT });
   };
 
-  setLanguage = (language) => {
-    this.setState({ language });
-  };
-
+ setLanguage = (selectedLanguage) => {
+  this.setState({ language: selectedLanguage });
+ };
+  
   render() {
     const { user, theme, language } = this.state;
     return (
