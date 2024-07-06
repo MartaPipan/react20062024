@@ -24,14 +24,22 @@ const SignInForm = (props) => {
             <Field
               type="email"
               name="email"
-              placeholder='email' />
-            <ErrorMessage name="email"/>
+              placeholder="email" />
+            <ErrorMessage
+              name="email"
+              component="span"
+              className={styles.invalid}
+            />
              
             <Field
               type="password"
               name="password"
-              placeholder='password' />
-            <ErrorMessage name="password"/>
+              placeholder="password" />
+            <ErrorMessage
+              name="password"
+              //component="span"
+            //className={styles.invalid}
+            />
               
             <input type="submit" value="sign in" />
          
