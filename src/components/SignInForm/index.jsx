@@ -21,6 +21,7 @@ const SignInForm = (props) => {
          //console.log(formikProps.errors);
         return (
           <Form className={styles.formContainer}>
+            <label>
             <Field
               type="email"
               name="email"
@@ -30,7 +31,7 @@ const SignInForm = (props) => {
               component="span"
               className={styles.invalid}
             />
-             
+             </label>
             <Field
               type="password"
               name="password"

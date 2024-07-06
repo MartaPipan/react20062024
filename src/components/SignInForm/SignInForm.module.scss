@@ -1,41 +1,45 @@
-@use '/src/common/styles/colors' as *;
-
+@use "/src/common/styles/colors" as *;
 
 .formContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 350px;
-    margin: auto;
-    padding: 20px;
-    font-size: small;
-    border: 1px solid $blue-light-color;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  margin: auto;
+  padding: 20px;
+  font-size: small;
+  border: 1px solid $blue-light-color;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.formContainer label {
+  display: flex;
+  flex-direction: column;
 }
 
 .formContainer input {
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid $blue-light-color;
-    border-radius: 3px;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid $blue-light-color;
+  border-radius: 3px;
 }
 
 .formContainer input[type="submit"] {
-    background-color: $blue-light-color;
-    color: white;
-    border: none;
-    cursor: pointer;
+  background-color: $blue-light-color;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
 .formContainer input[type="submit"]:hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }
 
-.valid{
-    background-color:$form-background-color;
+.valid {
+  background-color: $form-background-color;
 }
 
-.invalid{
-    background-color:$error-color;
+.invalid {
+  background-color: $error-color;
 }
