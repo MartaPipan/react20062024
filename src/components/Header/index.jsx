@@ -6,7 +6,7 @@ import { mdiWhiteBalanceSunny, mdiThemeLightDark } from '@mdi/js';
 import styles from "./Header.module.scss";
 import Menu from "../Menu";
 
-import { withTheme, withUser } from "../HOCs";
+import { withTheme, withUser, withLanguage } from "../HOCs";
 
 import CONSTANTS from "../../constants";
 const { THEME, LANGUAGE } = CONSTANTS;
@@ -49,4 +49,4 @@ const Header = ({ theme, setTheme, user: { ava }, language, setLanguage }) => {
   );
 };
 
-export default withTheme(withUser(Header));
+export default withLanguage(withTheme(withUser(Header)));
