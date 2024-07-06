@@ -1,6 +1,5 @@
 import { LanguageContext, ThemeContext, UserContext } from "../../contexts";
 
-
 // HOC for ThemeContext
 export const withTheme = (InnerComponent) => (props) => {
   return (
@@ -24,10 +23,12 @@ export const withUser = (InnerComponent) => (props) => {
 };
 
 // HOC for LanguageContext
-export const withLanguage= (InnerComponent) => (props) => {
+export const withLanguage = (InnerComponent) => (props) => {
   return (
     <LanguageContext.Consumer>
-      {([language, setLanguage]) => <InnerComponent language={language} setLanguage={setLanguage} {...props} />}
+      {([language, setLanguage]) => (
+        <InnerComponent language={language} setLanguage={setLanguage} {...props} />
+      )}
     </LanguageContext.Consumer>
   );
 };

@@ -21,12 +21,9 @@ const Header = ({ theme, setTheme, user: { ava }, language, setLanguage }) => {
     setTheme();
   };
 
-  const handlerLanguageChange = (newLanguage) => {
-    setLanguage(newLanguage);
-  };
-
-  const handleSelectChange = (selectedLanguage) => {
-    handlerLanguageChange(selectedLanguage);
+  const handleSelectChange = (event) => {
+    const selectedLanguage = event.target.value;
+    setLanguage(selectedLanguage);
   };
 
   const currentIconColor = theme === THEME.LIGHT ? mdiThemeLightDark : mdiWhiteBalanceSunny;
@@ -39,7 +36,7 @@ const Header = ({ theme, setTheme, user: { ava }, language, setLanguage }) => {
         path={currentIconColor}
         size={1}
       />
-      <select onChange={() => handleSelectChange(LANGUAGE.EN)} value={language}>
+      <select onChange={handleSelectChange} value={language}>
         <option value={LANGUAGE.EN}>English</option>
         <option value={LANGUAGE.PT}>Portuguese</option>
         <option value={LANGUAGE.UA}>Ukrainian</option>
