@@ -16,7 +16,7 @@ const SignInForm = (props) => {
     formikBag.resetForm()
   };
   return (
-    <Formik initialValues={initialValue} onSubmit={onSubmit}>
+    <Formik initialValues={initialValue} onSubmit={onSubmit} validationSchema={SCHEMA_USER_SIGN_IN}>
       {(formikProps) => {
         // console.log(formikProps);
         return (
@@ -27,12 +27,12 @@ const SignInForm = (props) => {
               placeholder='email' />
              
             <Field
-              type="password"
+              type="password"onChange={formikProps.onChange}
               name="password"
               placeholder='password' />
               
             <input type="submit" value="sign in" />
-            <input type="reset" />
+         
           </Form>
         );
       }}
