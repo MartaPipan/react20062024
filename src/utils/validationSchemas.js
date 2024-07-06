@@ -46,7 +46,7 @@ export const SCHEMA_USER_REGISTER = Yup.object({
 });
 
 
-export const SCHEMA_USER_SIGNIN = Yup.object({
+export const SCHEMA_USER_SIGN_IN = Yup.object({
   email: EMAIL,
   password: PASSWORD
 });
