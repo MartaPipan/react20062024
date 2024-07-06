@@ -24,16 +24,13 @@ export const IS_MALE = Yup.boolean();
 
 export const EMAIL = Yup.string()
   .trim()
-  .matches(
-    /^[a-zA-Z0-9]{8,16}$/,
-    "Senha deve ter entre 8 e 16 caracteres e conter apenas letras e números"
-  )
+  .email("Submeta um email válido")
   .required("Campo de preenchimento obrigatório");
 
 export const PASSWORD = Yup.string()
   .trim()
   .matches(
-    /^[a-zA-Z0-9]{8,16}$/,
+    /^[a-zA-Z0-9]{6,16}$/,
     "Senha deve ter entre 8 e 16 caracteres e conter apenas letras e números"
   )
   .required("Campo de preenchimento obrigatório");

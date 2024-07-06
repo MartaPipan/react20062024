@@ -1,49 +1,59 @@
 import React from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { SCHEMA_USER_SIGN_IN } from "../../utils/validationSchemas";
+import { SCHEMA_USER_SIGN_IN } from "../../utils/validationSchemas"; 
 
 import styles from "./SignInForm.module.scss";
 
-const initialValue = {
+const initialValues = {
   email: "",
   password: "",
 };
 
-const SignInForm = (props) => {
+const SignInForm = () => {
   const onSubmit = (values, formikBag) => {
     console.log(values);
     console.log(formikBag);
-    formikBag.resetForm()
+    formikBag.resetForm();
   };
+
   return (
-    <Formik initialValues={initialValue} onSubmit={onSubmit} validationSchema={SCHEMA_USER_SIGN_IN}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={SCHEMA_USER_SIGN_IN}
+    >
       {(formikProps) => {
-         //console.log(formikProps.errors);
+        // console.log(formikProps); //
         return (
           <Form className={styles.formContainer}>
             <label>
-            <Field
-              type="email"
-              name="email"
-              placeholder="email" />
-            <ErrorMessage
-              name="email"
-              component="span"
-              className={styles.invalid}
-            />
-             </label>
-            <Field
-              type="password"
-              name="password"
-              placeholder="password" />
-            <ErrorMessage
-              name="password"
-              //component="span"
-            //className={styles.invalid}
-            />
-              
+              <em>FORMA:</em>
+              <Field
+                type="email"
+                name="email"
+                placeholder="email"
+              />
+              <ErrorMessage
+                name="email"
+                component="span"
+                className={styles.invalid}
+              />
+            </label>
+
+            <label>
+              <Field
+                type="password"
+                name="password"
+                placeholder="password"
+              />
+              <ErrorMessage
+                name="password"
+                component="span"
+                className={styles.invalid}
+              />
+            </label>
+
             <input type="submit" value="sign in" />
-         
           </Form>
         );
       }}
