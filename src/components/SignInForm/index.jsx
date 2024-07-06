@@ -1,5 +1,5 @@
 import React from "react";
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import { SCHEMA_USER_SIGN_IN } from "../../utils/validationSchemas";
 
 import styles from "./SignInForm.module.scss";
@@ -18,18 +18,20 @@ const SignInForm = (props) => {
   return (
     <Formik initialValues={initialValue} onSubmit={onSubmit} validationSchema={SCHEMA_USER_SIGN_IN}>
       {(formikProps) => {
-        // console.log(formikProps);
+         //console.log(formikProps.errors);
         return (
           <Form className={styles.formContainer}>
             <Field
               type="email"
               name="email"
               placeholder='email' />
+            <ErrorMessage name="email"/>
              
             <Field
-              type="password"onChange={formikProps.onChange}
+              type="password"
               name="password"
               placeholder='password' />
+            <ErrorMessage name="password"/>
               
             <input type="submit" value="sign in" />
          
