@@ -2,11 +2,11 @@ import React from "react";
 import cx from 'classnames';
 import styles from './SignInFormPage.module.scss';
 import SignInForm from "../../components/SignInForm";
-import { withTheme } from "../../components/HOCs";
+import { withLanguage, withTheme } from "../../components/HOCs";
 import CONSTANTS from '../../constants';
 const { THEME } = CONSTANTS;
 
-const SignInFormPage = ({ theme }) => {
+const SignInFormPage = ({ theme, language}) => {
   const isLight = theme === THEME.LIGHT;
   const classNames = cx(styles.page, {
     [styles.light]: isLight,
@@ -20,4 +20,4 @@ const SignInFormPage = ({ theme }) => {
   );
 };
 
-export default withTheme(SignInFormPage);
+export default withLanguage(withTheme(SignInFormPage));

@@ -6,7 +6,7 @@ import CONSTANTS from "../../constants";
 const { TRANSLATIONS } = CONSTANTS;
 
 const Menu = () => {
-  const [language] = useContext(LanguageContext); // Use o useContext aqui
+  const [language] = useContext(LanguageContext); 
 
   return (
     <nav>
