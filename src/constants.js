@@ -1,15 +1,73 @@
 const CONSTANTS = {
-    THEME: {
-        LIGHT: 'LIGHT',
-        DARK: 'DARK',
-    }, 
-    LANGUAGE: {
-        EN: 'ENGLISH',
-        PT: 'PORTUGUES',
-        UA: 'УКРАЇНСЬКА',
-    }
-}
+  THEME: {
+    LIGHT: "LIGHT",
+    DARK: "DARK",
+  },
+  LANGUAGE: {
+    EN: "ENGLISH",
+    PT: "PORTUGUES",
+    UA: "УКРАЇНСЬКА",
+  },
 
+  TRANSLATIONS: {
+    en: {
+      home: "Home",
+      users: "Users",
+      counter: "Counter",
+      load: "Load",
+      form: "Form",
+      signin: "Sign In",
+      error: "Error",
+      usersLoader: "Users Loader",
+      events: "Events",
+      phones: "Phones",
+      signinForm: "Sign In Form",
+      emailAddress: "Email Address",
+      password: "Password",
+      signIn: "Sign In",
+      emptyUsers: "Empty users",
+      errorMessage: "ERROR!!!",
+      userLoader: "Users:",
+    },
+    pt: {
+      home: "Início",
+      users: "Usuários",
+      counter: "Contador",
+      load: "Carregar",
+      form: "Formulário",
+      signin: "Entrar",
+      error: "Erro",
+      usersLoader: "Carregamento de Usuários",
+      events: "Eventos",
+      phones: "Telefones",
+      signinForm: "Formulário de Login",
+      emailAddress: "Endereço de Email",
+      password: "Senha",
+      signIn: "Entrar",
+      emptyUsers: "Usuários vazios",
+      errorMessage: "ERRO!!!",
+      userLoader: "Usuários:",
+    },
+    ua: {
+      home: "Головна",
+      users: "Користувачі",
+      counter: "Лічильник",
+      load: "Завантажити",
+      form: "Форма",
+      signin: "Увійти",
+      error: "Помилка",
+      usersLoader: "Завантаження користувачів",
+      events: "Події",
+      phones: "Телефони",
+      signinForm: "Форма входу",
+      emailAddress: "Електронна адреса",
+      password: "Пароль",
+      signIn: "Увійти",
+      emptyUsers: "Порожні користувачі",
+      errorMessage: "ПОМИЛКА!!!",
+      userLoader: "Користувачі:",
+    },
+  },
+};
 
-
-export default CONSTANTS
+export default CONSTANTS;
