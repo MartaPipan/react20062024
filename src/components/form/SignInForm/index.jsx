@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import { LanguageContext} from '../../../contexts';
+import CONSTANTS from '../../../constants';
 import { Form, Formik } from "formik";
 import { SCHEMA_USER_SIGN_IN } from "../../../utils/validationSchemas";
 
 import styles from "./SignInForm.module.scss";
-import Input from "../Input/input";
+import InputValidation from "../InputValidate";
+const { TRANSLATIONS } = CONSTANTS;
 
 const initialValues = {
   email: "",
   password: "",
 };
 
-const SignInForm = () => {
+  const SignInForm = () => {
+  const { language } = useContext(LanguageContext);
   const onSubmit = (values, formikBag) => {
     console.log(values);
     console.log(formikBag);
@@ -24,9 +28,9 @@ const SignInForm = () => {
       validationSchema={SCHEMA_USER_SIGN_IN}
     >
       <Form className={styles.formContainer}>
-        <Input type="email" name="email" placeholder="email" />
-        <Input type="password" name="password" placeholder="password" />
-        <input type="submit" value="sign in" />
+        <InputValidation type="email" name="email" placeholder="email" />
+        <InputValidation type="password" name="password" placeholder="password" />
+         <button type="submit">submit</button>
       </Form>
     </Formik>
   );
@@ -38,6 +42,7 @@ export default SignInForm;
 import { Formik, Field, Form } from "formik";
 import styles from './SignInForm.module.scss';
 import { SCHEMA_USER_REGISTER } from '../../utils/validationSchemas';
+import { LanguageContext } from '../../../contexts/index';
 
 const SignInForm = () => {
   return (

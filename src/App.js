@@ -44,29 +44,31 @@ class App extends Component {
   render() {
     const { user, theme, language } = this.state;
     return (
-      <LanguageContext.Provider value={[language, this.setLanguage]}>
-        <ThemeContext.Provider value={[theme, this.setTheme]}>
-          <UserContext.Provider value={user}>
-            <BrowserRouter>
-              <Header />
-              <main>
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/users" element={<UsersLoaderPage />} />
-                  <Route path="/counter" element={<CounterPage />} />
-                  <Route path="/form" element={<SignInFormPage />} />
-                  <Route path="/load" element={<LoaderPage />}>
-                    <Route path="events" element={<EventsBlock />} />
-                    <Route path="phones" element={<PhonesBlock />} />
-                  </Route>
-                  <Route path="*" element={<ErrorPage />} />
-                </Routes>
-              </main>
-              <Footer />
-            </BrowserRouter>
-          </UserContext.Provider>
-        </ThemeContext.Provider>
-      </LanguageContext.Provider>
+      <>
+        <LanguageContext.Provider value={[language, this.setLanguage]}>
+          <ThemeContext.Provider value={[theme, this.setTheme]}>
+            <UserContext.Provider value={user}>
+              <BrowserRouter>
+                <Header />
+                <main>
+                  <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/users" element={<UsersLoaderPage />} />
+                    <Route path="/counter" element={<CounterPage />} />
+                    <Route path="/form" element={<SignInFormPage />} />
+                    <Route path="/load" element={<LoaderPage />}>
+                      <Route path="events" element={<EventsBlock />} />
+                      <Route path="phones" element={<PhonesBlock />} />
+                    </Route>
+                    <Route path="*" element={<ErrorPage />} />
+                  </Routes>
+                </main>
+                <Footer />
+              </BrowserRouter>
+            </UserContext.Provider>
+          </ThemeContext.Provider>
+        </LanguageContext.Provider>
+      </>
     );
   }
 }
