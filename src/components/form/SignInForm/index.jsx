@@ -1,6 +1,6 @@
 import React from "react";
-import {  Form, Formik } from "formik";
-import { SCHEMA_USER_SIGN_IN } from "../../../utils/validationSchemas"; 
+import { Form, Formik } from "formik";
+import { SCHEMA_USER_SIGN_IN } from "../../../utils/validationSchemas";
 
 import styles from "./SignInForm.module.scss";
 import Input from "../Input/input";
@@ -23,16 +23,11 @@ const SignInForm = () => {
       onSubmit={onSubmit}
       validationSchema={SCHEMA_USER_SIGN_IN}
     >
-      {(formikProps) => {
-        // console.log(formikProps); //
-        return (
-          <Form className={styles.formContainer}>
-            <Input type="email" name="email" placeholder="email" />
-            <Input type="password" name="password" placeholder="password"/>
-            <input type="submit" value="sign in" />
-          </Form>
-        );
-      }}
+      <Form className={styles.formContainer}>
+        <Input type="email" name="email" placeholder="email" />
+        <Input type="password" name="password" placeholder="password" />
+        <input type="submit" value="sign in" />
+      </Form>
     </Formik>
   );
 };
