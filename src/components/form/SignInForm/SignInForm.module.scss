@@ -12,10 +12,23 @@
   border-radius: 5px;
   background-color: #f9f9f9;
 }
-
 .formContainer label {
   display: flex;
   flex-direction: column;
+}
+
+.formContainer input {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid $blue-light-color;
+  border-radius: 3px;
+}
+
+.formContainer input[type="submit"] {
+  background-color: $blue-light-color;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
 .formContainer input {
@@ -41,5 +54,5 @@
 }
 
 .invalid {
-  background-color:rgba(251, 129, 152, 0.366);
+  background-color: rgba(251, 129, 152, 0.366);
 }

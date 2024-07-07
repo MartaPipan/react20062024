@@ -1,14 +1,13 @@
 import React from "react";
-import cx from 'classnames';
-import styles from './HomePage.module.scss';
+import cx from "classnames";
+import styles from "./HomePage.module.scss";
 import WindowWork from "../../components/WindowWork";
 import Tree from "../../components/Tree";
 import { withTheme } from "../../components/HOCs";
-import CONSTANTS from '../../constants';
-import { withLanguage } from '../../components/HOCs/index';
+import CONSTANTS from "../../constants";
+import { withLanguage } from "../../components/HOCs/index";
 
 const { THEME, TRANSLATIONS } = CONSTANTS;
-
 
 const HomePage = ({ theme, language }) => {
   const isLight = theme === THEME.LIGHT;
@@ -19,7 +18,7 @@ const HomePage = ({ theme, language }) => {
 
   return (
     <div className={classNames}>
-      <h1>{TRANSLATIONS[language].home}</h1>
+      <em>{TRANSLATIONS[language].home}</em>
       <WindowWork />
       <Tree />
     </div>

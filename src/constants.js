@@ -1,5 +1,3 @@
-// constants.js
-
 const CONSTANTS = {
   THEME: {
     LIGHT: 'LIGHT',

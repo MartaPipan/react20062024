@@ -1,6 +1,6 @@
 import React from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { SCHEMA_USER_SIGN_IN } from "../../utils/validationSchemas"; 
+import { SCHEMA_USER_SIGN_IN } from "../../../utils/validationSchemas"; 
 
 import styles from "./SignInForm.module.scss";
 
