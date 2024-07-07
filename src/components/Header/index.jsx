@@ -1,4 +1,6 @@
-import React from "react";
+// Header.jsx
+
+import React, { useContext } from "react";
 import cx from "classnames";
 import Icon from '@mdi/react';
 import { mdiWhiteBalanceSunny, mdiThemeLightDark } from '@mdi/js';
@@ -7,11 +9,14 @@ import styles from "./Header.module.scss";
 import Menu from "../Menu";
 
 import { withTheme, withUser, withLanguage } from "../HOCs";
-
+import { LanguageContext } from "../../contexts";
 import CONSTANTS from "../../constants";
-const { THEME, LANGUAGE } = CONSTANTS;
 
-const Header = ({ theme, setTheme, user: { ava }, language, setLanguage }) => {
+const { THEME, LANGUAGE, TRANSLATIONS } = CONSTANTS;
+
+const Header = ({ theme, setTheme, user: { ava } }) => {
+  const [language, setLanguage] = useContext(LanguageContext);
+
   const classNames = cx(styles.header, {
     [styles.light]: theme === THEME.LIGHT,
     [styles.dark]: theme === THEME.DARK,
@@ -37,9 +42,9 @@ const Header = ({ theme, setTheme, user: { ava }, language, setLanguage }) => {
         size={1}
       />
       <select onChange={handleSelectChange} value={language}>
-        <option value={LANGUAGE.EN}>English</option>
-        <option value={LANGUAGE.PT}>Portuguese</option>
-        <option value={LANGUAGE.UA}>Ukrainian</option>
+        <option value={LANGUAGE.EN}>{TRANSLATIONS[LANGUAGE.EN].name}</option>
+        <option value={LANGUAGE.PT}>{TRANSLATIONS[LANGUAGE.PT].name}</option>
+        <option value={LANGUAGE.UA}>{TRANSLATIONS[LANGUAGE.UA].name}</option>
       </select>
       <img src={ava} alt="ava" />
     </header>
