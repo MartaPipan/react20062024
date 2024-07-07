@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import Counter from "../Counter";
 import ControlCounter from "../ControlCounter";
 import styles from "./CounterSection.module.scss";
+import { withLanguage } from "../../components/HOCs";
+import CONSTANTS from "../../constants";
+
+const { TRANSLATIONS } = CONSTANTS;
 
 class CounterSection extends Component {
   constructor() {
@@ -82,23 +86,29 @@ class CounterSection extends Component {
 
   render() {
     const { step, autoClickTimeLeft, count, mode } = this.state;
+    const { language } = this.props;
+
     return (
       <section className={styles.container}>
+        {/* Компонент для відображення лічильника */}
         <Counter
           count={count}
           mode={mode}
           handleCount={this.handleCount}
           handleChangeMode={this.handleChangeMode}
           autoClickTimeLeft={autoClickTimeLeft}
+          translations={TRANSLATIONS[language]}
         />
+        {/* Компонент для управління лічильником */}
         <ControlCounter
           step={step}
           setStep={this.setStep}
           handleAutoClick={this.handleAutoClick}
+          translations={TRANSLATIONS[language]}
         />
       </section>
     );
   }
 }
 
-export default CounterSection;
+export default withLanguage(CounterSection);

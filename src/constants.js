@@ -33,7 +33,7 @@ const CONSTANTS = {
       birthday: 'birthday',
       new: 'new',
       year: 'year',
-       signIn: "Sign In",
+      signIn: "Sign In",
       email: "Email",
       password: "Password",
       submit: "Submit",

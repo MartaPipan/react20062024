@@ -1,8 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./ControlCounter.module.scss";
+import { withLanguage } from '../HOCs/index';
+import CONSTANTS from '../../constants';
 
-const ControlCounter = ({ step, setStep, handleAutoClick }) => {
+const { TRANSLATIONS } = CONSTANTS;
+
+
+const ControlCounter = ({ step, setStep, handleAutoClick, language }) => {
   return (
     <div className={styles.controlCounter}>
       <h3>Current step: {step}</h3>
@@ -13,11 +18,11 @@ const ControlCounter = ({ step, setStep, handleAutoClick }) => {
         value={step}
         min="1"
         max="1000000"
-        onChange={(e) => setStep(Number(e.target.value))}
+        onChange={() => setStep(Number())}
         className={styles.input}
       />
       {/* Кнопка для запуску/зупинки автоматичного кліку */}
-      <button onClick={handleAutoClick}>AutoClick</button>
+      <button onClick={handleAutoClick}>{TRANSLATIONS[language].AutoClick}</button>
     </div>
   );
 };
@@ -34,4 +39,4 @@ ControlCounter.defaultProps = {
   handleAutoClick: () => {},
 };
 
-export default ControlCounter;
+export default withLanguage(ControlCounter);

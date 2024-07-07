@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
-import { LanguageContext} from '../../../contexts';
-import CONSTANTS from '../../../constants';
+import React from "react";
 import { Form, Formik } from "formik";
 import { SCHEMA_USER_SIGN_IN } from "../../../utils/validationSchemas";
-
 import styles from "./SignInForm.module.scss";
 import InputValidation from "../InputValidate";
+import { withLanguage } from "../../HOCs";
+import CONSTANTS from '../../../constants';
+
 const { TRANSLATIONS } = CONSTANTS;
 
 const initialValues = {
@@ -13,8 +13,7 @@ const initialValues = {
   password: "",
 };
 
-  const SignInForm = () => {
-  const { language } = useContext(LanguageContext);
+const SignInForm = ({ language }) => {
   const onSubmit = (values, formikBag) => {
     console.log(values);
     console.log(formikBag);
@@ -28,15 +27,16 @@ const initialValues = {
       validationSchema={SCHEMA_USER_SIGN_IN}
     >
       <Form className={styles.formContainer}>
-        <InputValidation type="email" name="email" placeholder="email" />
-        <InputValidation type="password" name="password" placeholder="password" />
-         <button type="submit">submit</button>
+        <InputValidation type="email" name="email" placeholder={TRANSLATIONS[language].email} />
+        <InputValidation type="password" name="password" placeholder={TRANSLATIONS[language].password} />
+        <button type="submit">{TRANSLATIONS[language].submit}</button>
       </Form>
     </Formik>
   );
 };
 
-export default SignInForm;
+export default withLanguage(SignInForm);
+
 
 /*import React from "react";
 import { Formik, Field, Form } from "formik";
