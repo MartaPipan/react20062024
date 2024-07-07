@@ -1,0 +1,21 @@
+@use "/src/common/styles/colors" as *;
+
+
+.label {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.inputField {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid $blue-light-color;
+    /* Replace with your actual color variable */
+    border-radius: 3px;
+    width: 100%;
+    /* Ensure inputs take full width */
+}
+.invalid {
+    background-color: rgba(251, 129, 152, 0.366);
+}

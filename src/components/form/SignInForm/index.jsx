@@ -1,8 +1,9 @@
 import React from "react";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import {  Form, Formik } from "formik";
 import { SCHEMA_USER_SIGN_IN } from "../../../utils/validationSchemas"; 
 
 import styles from "./SignInForm.module.scss";
+import Input from "../Input/input";
 
 const initialValues = {
   email: "",
@@ -26,33 +27,8 @@ const SignInForm = () => {
         // console.log(formikProps); //
         return (
           <Form className={styles.formContainer}>
-            <label>
-              <em>FORMA:</em>
-              <Field
-                type="email"
-                name="email"
-                placeholder="email"
-              />
-              <ErrorMessage
-                name="email"
-                component="span"
-                className={styles.invalid}
-              />
-            </label>
-
-            <label>
-              <Field
-                type="password"
-                name="password"
-                placeholder="password"
-              />
-              <ErrorMessage
-                name="password"
-                component="span"
-                className={styles.invalid}
-              />
-            </label>
-
+            <Input type="email" name="email" placeholder="email" />
+            <Input type="password" name="password" placeholder="password"/>
             <input type="submit" value="sign in" />
           </Form>
         );
