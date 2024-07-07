@@ -2,11 +2,11 @@ import React from "react";
 import cx from 'classnames';
 import styles from './LoaderPage.module.scss';
 import UsersLoader from "../components/UsersLoader";
-import { withTheme } from "../components/HOCs";
+import { withLanguage, withTheme } from "../components/HOCs";
 import CONSTANTS from "../constants";
 const { THEME } = CONSTANTS;
 
-const UsersLoaderPage = ({ theme }) => {
+const UsersLoaderPage = ({ theme,language }) => {
   const isLight = theme === THEME.LIGHT;
   const classNames = cx(styles.page, {
     [styles.light]: isLight,
@@ -20,4 +20,4 @@ const UsersLoaderPage = ({ theme }) => {
   );
 };
 
-export default withTheme(UsersLoaderPage);
+export default withLanguage(withTheme(UsersLoaderPage));
